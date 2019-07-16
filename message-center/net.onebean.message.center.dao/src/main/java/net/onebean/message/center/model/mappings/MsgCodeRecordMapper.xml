@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description 短信验证码 mapper-->
+<!--date 2019-03-31 21:37:12-->
+<mapper namespace="net.onebean.message.center.dao.MsgCodeRecordDao">
+
+</mapper>

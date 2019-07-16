@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Magnesium.iml" filepath="$PROJECT_DIR$/.idea/Magnesium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-adapter/com.eakay.api.adapter.iml" filepath="$PROJECT_DIR$/api-adapter/com.eakay.api.adapter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-adapter/net.onebean.api.adapter.api/com.eakay.api.adapter.api.iml" filepath="$PROJECT_DIR$/api-adapter/net.onebean.api.adapter.api/com.eakay.api.adapter.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-adapter/net.onebean.api.adapter.dao/com.eakay.api.adapter.dao.iml" filepath="$PROJECT_DIR$/api-adapter/net.onebean.api.adapter.dao/com.eakay.api.adapter.dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-adapter/net.onebean.api.adapter.service/com.eakay.api.adapter.service.iml" filepath="$PROJECT_DIR$/api-adapter/net.onebean.api.adapter.service/com.eakay.api.adapter.service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-adapter/net.onebean.api.adapter.web/com.eakay.api.adapter.web.iml" filepath="$PROJECT_DIR$/api-adapter/net.onebean.api.adapter.web/com.eakay.api.adapter.web.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/uag/error/css/prompt.css">
+</head>
+<body>
+
+<div class="prompt-container">
+    <div class="prompt-img">
+        <img src="./img/500.png">
+    </div>
+    <div class="prompt-tip">
+        <div class="prompt-tip-error">错误 500</div>
+        <div class="prompt-tip-warn">抱歉，服务器内部出错,请稍后再试！</div>
+        <a href="/portal/index.html" class="prompt-button">进入首页</a>
+        <a id="logoutId" href="" class="prompt-button">退出</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var url = window.location.href;
+    var index = url.indexOf("?");
+    if(index != -1){
+        url = url.substring(0,index);
+    }
+
+    var service = window.location.protocol + "//" + window.location.host+window.location.port + "/tenant/logout?service="+encodeURIComponent(url);
+    document.querySelector("#logoutId").href = "/tenant/uapLogout?service="+encodeURIComponent(service);
+
+</script>
+
+</body>
+</html>

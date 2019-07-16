@@ -1,0 +1,22 @@
+{
+	"redis_ip": "0.0.0.0",
+    "redis_port": 6381,
+    "redis_password": "123456",
+    "redis_select": 3,
+    "redis_timeout": 1000,
+    "redis_max_idle_time": 10000,
+    "redis_pool_size": 2000,
+    "user_expire": 7200,
+    "auth_expire": 7200,
+    "ignore_auth": false,
+    "allow_ips": "127.0.0.1",
+    "mobile_user_agent": "Android,iPhone,iPad,iPod,BB10,PlayBook,KFAPWI,Windows Phone,MeeGo,CFNetwork,okhttp",
+    "mysql_host": "0.0.0.0",
+    "mysql_port": 3306,
+    "mysql_timeout": 3000,
+    "mysql_pool_size": 30,
+    "mysql_max_idle_time": 3000,
+    "mysql_database": "xxxxx",
+    "mysql_user": "xxxx",
+    "mysql_password": "xxxxxx"
+}

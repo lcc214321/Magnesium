@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description server info mapper-->
+<!--date 2019-01-21 18:05:28-->
+<mapper namespace="net.onebean.server.mngt.dao.ServerInfoDao">
+    <select id="findBindAppNameByServerId" parameterType="string" resultType="string">
+        SELECT
+          app.`app_name`
+        FROM
+          `t_app_info` app
+          LEFT JOIN `t_app_api` aa
+            ON aa.`app_id` = app.`id`
+          LEFT JOIN t_api_info api
+            ON api.`id` = aa.`api_id`
+            LEFT JOIN `t_server_info` s ON s.id = api.`server_id`
+        WHERE s.id = ${serverId}
+        and app.is_deleted = '0'
+        and aa.is_deleted = '0'
+        and api.is_deleted = '0'
+        and s.is_deleted = '0'
+        ORDER BY app.id
+        LIMIT 1
+    </select>
+</mapper>

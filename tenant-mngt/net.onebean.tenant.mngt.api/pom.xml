@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.onebean</groupId>
+    <artifactId>net.onebean.tenant.mngt.api</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>net.onebean.tenant.mngt.api</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <net.onebean.core.version>1.0.0-SNAPSHOT</net.onebean.core.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.onebean</groupId>
+            <artifactId>net.onebean.core</artifactId>
+            <version>${net.onebean.core.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>api-profile-default</id>
+            <activation>
+                <jdk>${java.version}</jdk>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <maven.compiler.source>${java.version}</maven.compiler.source>
+                <maven.compiler.target>${java.version}</maven.compiler.target>
+                <maven.compiler.compilerVersion>${java.version}</maven.compiler.compilerVersion>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                            <compilerArguments>
+                                <bootclasspath>${JAVA_HOME}/jre/lib/rt.jar</bootclasspath>
+                            </compilerArguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <repository>
+                    <id>repo-private</id>
+                    <name>Nexus Release Repository</name>
+                    <url>http://nexus.onebean.com:8082/repository/maven-releases/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>repo-private</id>
+                    <name>Nexus Snapshot Repository</name>
+                    <url>http://nexus.onebean.com:8082/repository/maven-snapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description app info join api info mapper-->
+<!--date 2019-01-25 20:13:35-->
+<mapper namespace="net.onebean.app.mngt.dao.AppApiDao">
+    <update id="deleteByAppidAndApiIds">
+        update t_app_api t set is_deleted = 1
+        where t.app_id = #{appId}
+        and  api_id in
+        <foreach collection="apiIds"  item="item" open="(" separator="," close=")"  >
+            #{item}
+        </foreach>
+    </update>
+</mapper>

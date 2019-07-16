@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description 未登录访问API白名单 mapper-->
+<!--date 2019-06-28 11:02:32-->
+<mapper namespace="net.onebean.app.mngt.dao.UnLoginAccessApiWhiteListDao">
+
+        <sql id="basicFiled">
+                t.id,
+                t.api_id, 
+                t.app_id, 
+                t.api_name, 
+                t.api_path, 
+                t.create_time, 
+                t.update_time, 
+                t.operator_id, 
+                t.operator_name, 
+                t.is_deleted
+        </sql>
+
+        <resultMap id="basicResultMap" type="net.onebean.app.mngt.model.UnLoginAccessApiWhiteList">
+            <id column="id" jdbcType="INTEGER" property="id"/>
+                <result column="api_id" jdbcType="INTEGER" property="apiId"/>
+                <result column="app_id" jdbcType="INTEGER" property="appId"/>
+                <result column="api_name" jdbcType="VARCHAR" property="apiName"/>
+                <result column="api_path" jdbcType="VARCHAR" property="apiPath"/>
+                <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+                <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+                <result column="operator_id" jdbcType="INTEGER" property="operatorId"/>
+                <result column="operator_name" jdbcType="VARCHAR" property="operatorName"/>
+                <result column="is_deleted" jdbcType="CHAR" property="isDeleted"/>
+        </resultMap>
+
+
+    <select id="findUnBindingData" resultType="net.onebean.app.mngt.vo.UnLoginAccessApiWhiteListVo">
+        SELECT
+        api.`id` as api_id,api.`api_name`,api.`proxy_path` as api_path ,${appId} as app_id
+        FROM
+        `t_api_info` api
+        LEFT JOIN `t_app_api` aa
+        ON aa.`api_id` = api.`id`
+        LEFT JOIN `t_app_info` app
+        ON app.`id` = aa.`app_id`
+        WHERE app.`id` = ${appId}
+        AND api.`id` NOT IN
+        (SELECT
+        aw.`api_id`
+        FROM
+        `t_un_login_access_api_white_list` aw
+        WHERE aw.`app_id` = ${appId} AND aw.`is_deleted` = '0')
+        <if test="apiName != null and apiName != ''">
+            AND api.`api_name` like CONCAT('%',#{apiName},'%')
+        </if>
+        AND api.`is_deleted` = '0'
+        AND aa.`is_deleted` = '0'
+        AND app.`is_deleted` = '0'
+    </select>
+
+
+    <select id="findUnLoginAccessWhiteListSyncList" resultMap="syncList">
+        SELECT
+          s.id,
+          s.api_id,
+          app.`open_id` AS app_id,
+          s.api_name,
+          s.api_path
+        FROM
+          `t_un_login_access_api_white_list` s
+          LEFT JOIN `t_app_info` app ON app.`id` = s.`app_id`
+        WHERE s.`is_deleted` = '0'
+    </select>
+
+    <resultMap id="syncList" type="net.onebean.app.mngt.api.model.RsSalesUnLoginAccessWhiteSyncListVo">
+        <result column="app_id" property="appId"/>
+        <collection property="rsSalesUnLoginAccessWhiteListVos" column="id" ofType="net.onebean.app.mngt.api.model.RsSalesUnLoginAccessWhiteVo">
+            <id column="id" property="id"/>
+            <result column="app_id" property="appId"/>
+            <result column="apiId" property="apiId"/>
+            <result column="api_name" property="apiName"/>
+            <result column="api_path" property="apiPath"/>
+        </collection>
+    </resultMap>
+
+
+</mapper>

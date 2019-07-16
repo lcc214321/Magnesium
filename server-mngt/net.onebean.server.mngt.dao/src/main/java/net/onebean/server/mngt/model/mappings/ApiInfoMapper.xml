@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description api info mapper-->
+<!--date 2019-01-22 10:59:03-->
+<mapper namespace="net.onebean.server.mngt.dao.ApiInfoDao">
+
+
+    <select id="findUnBindApiIds" parameterType="string" resultType="string">
+        select api.id as `key` from t_api_info api where not exists (select * from t_app_api u where u.api_id = api.id and u.app_id = #{appId} and u.is_deleted = '0')
+        and api.server_id = #{serverId} and api.is_deleted = '0'
+    </select>
+
+    <select id="findApiByServerId" parameterType="string" resultType="net.onebean.server.mngt.api.model.ApiInfoCloudVo">
+        select
+          api.server_id,api.api_status,api.api_uri,api.id as `key`,api.api_name as `label`,api.id
+         from t_api_info api where api.server_id = #{serverId} and api.is_deleted = '0'
+    </select>
+
+    <select id="findApiByAppId" parameterType="string" resultType="net.onebean.server.mngt.api.model.ApiInfoCloudVo">
+        select
+          api.server_id,api.api_status,api.api_uri,api.id as `key`,api.api_name as `label`
+         from t_api_info api
+            left join t_app_api aa on aa.api_id = api.id
+          where
+            aa.app_id = #{appId}
+              and api.is_deleted = '0'
+                and aa.is_deleted = '0'
+    </select>
+
+    <select id="findSyncAppApiRelationship" resultMap="appApiRelationshipMap">
+        select app.open_id,aa.api_id from t_app_api aa
+          left join t_app_info app on app.id = aa.app_id
+          where
+           aa.is_deleted = '0'
+           and app.is_deleted = '0'
+    </select>
+
+    <select id="findSyncUriApiRelationship" resultMap="uriApiRelationshipMap">
+         select
+            s.host_path,
+            s.deploy_type,
+            api.proxy_path,
+            api.proxy_path as path,
+            api.api_name,
+            api.api_uri,
+            api.api_status,
+            api.server_id,
+            api.id
+          from t_api_info api
+            left join t_server_info s on s.id = api.server_id
+         where
+        exists (select * from t_app_api u where u.api_id = api.id  and u.is_deleted = '0')
+        and api.is_deleted = '0'
+    </select>
+
+    <resultMap id="uriApiRelationshipMap" type="net.onebean.server.mngt.api.model.UriApiRelationshipVo">
+        <result column="path" property="path"/>
+        <association property="apiInfo" column="api_uri" javaType="net.onebean.server.mngt.api.model.ApiInfoVo">
+            <id column="id" property="id"/>
+            <result column="api_name" property="apiName"/>
+            <result column="proxy_path" property="proxyPath"/>
+            <result column="api_uri" property="apiUri"/>
+            <result column="api_status" property="apiStatus"/>
+            <result column="server_id" property="serverId"/>
+            <result column="host_path" property="hostPath"/>
+            <result column="deploy_type" property="deployType"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="appApiRelationshipMap" type="net.onebean.server.mngt.api.model.AppApiRelationshipAppVo">
+        <result column="open_id" property="openId"/>
+        <collection property="apiIds" ofType="string" javaType="list">
+            <result column="api_id" />
+        </collection>
+    </resultMap>
+
+    <select id="findBindAppNameByApiId" parameterType="string" resultType="string">
+        SELECT
+          app.`app_name`
+        FROM
+          `t_app_info` app
+          LEFT JOIN `t_app_api` aa
+            ON aa.`app_id` = app.`id`
+          LEFT JOIN t_api_info api
+            ON api.`id` = aa.`api_id`
+        WHERE api.id = ${apiId}
+        and app.is_deleted = '0'
+        and aa.is_deleted = '0'
+        and api.is_deleted = '0'
+        ORDER BY app.id
+        LIMIT 1
+    </select>
+
+    <select id="countByProxyPathAndId" resultType="int">
+        SELECT
+          count(id)
+        FROM
+          `t_api_info` a
+        WHERE a.`proxy_path` = #{proxyPath}
+        and a.is_deleted = '0'
+        <if test="id != null and id != ''">
+            AND a.`id` != ${id}
+        </if>
+    </select>
+</mapper>

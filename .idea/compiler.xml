@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="com.eakay.api.adapter.api" />
+        <module name="com.eakay.api.adapter.dao" />
+        <module name="com.eakay.api.adapter.service" />
+        <module name="com.eakay.api.adapter.web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.eakay.api.adapter" target="1.8" />
+      <module name="com.eakay.api.adapter.api" target="1.8" />
+      <module name="com.eakay.api.adapter.dao" target="1.8" />
+      <module name="com.eakay.api.adapter.rest" target="1.7" />
+      <module name="com.eakay.api.adapter.service" target="1.8" />
+      <module name="com.eakay.api.adapter.web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="com.eakay.api.adapter.api" options="-bootclasspath &quot;C:\Program Files\Java\jdk1.8.0_171/jre/lib/rt.jar&quot;" />
+      <module name="com.eakay.api.adapter.dao" options="-bootclasspath &quot;C:\Program Files\Java\jdk1.8.0_171/jre/lib/rt.jar&quot;" />
+      <module name="com.eakay.api.adapter.rest" options="-bootclasspath &quot;C:\Program Files\Java\jdk1.8.0_171/jre/lib/rt.jar&quot;" />
+      <module name="com.eakay.api.adapter.service" options="-bootclasspath &quot;C:\Program Files\Java\jdk1.8.0_171/jre/lib/rt.jar&quot;" />
+      <module name="com.eakay.api.adapter.web" options="-bootclasspath &quot;C:\Program Files\Java\jdk1.8.0_171/jre/lib/rt.jar&quot;" />
+    </option>
+  </component>
+</project>

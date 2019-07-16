@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description upsteam node info mapper-->
+<!--date 2019-03-01 15:25:32-->
+<mapper namespace="net.onebean.server.mngt.dao.UpSteamNodeDao">
+
+    <resultMap type="net.onebean.server.mngt.api.model.UpSteamSyncNodeVo" id="upSteamSyncNodeVoMap">
+        <result property="nodeName" column="node_name"/>
+        <collection property="nodes" ofType="net.onebean.server.mngt.api.model.UpSteamSyncNodeChildVo">
+            <result property="physicalPath" column="physical_path"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="findSyncNode" resultMap="upSteamSyncNodeVoMap">
+      SELECT t.`node_name`,t.`physical_path`
+       FROM `t_upsteam_node` t
+        WHERE t.`is_deleted` = '0'
+          GROUP BY t.`node_name`;
+    </select>
+
+</mapper>

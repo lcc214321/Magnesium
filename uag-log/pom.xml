@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.onebean</groupId>
+        <artifactId>onebean.boot.stater</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+
+    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>net.onebean.uag.log</artifactId>
+    <packaging>jar</packaging>
+
+    <name>uag.log</name>
+    <description>sso.api</description>
+
+    <properties>
+        <net.onebean.core.version>${core.version}</net.onebean.core.version>
+    </properties>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>net.onebean</groupId>
+            <artifactId>net.onebean.core</artifactId>
+            <version>${net.onebean.core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.onebean</groupId>
+            <artifactId>net.onebean.user.mngt.api</artifactId>
+            <version>1.0.0.SNAPSHOT</version>
+        </dependency>
+
+
+    </dependencies>
+
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/0nebean</url>
+        <connection>git@github.com:0nebean/net.onebean.core.git</connection>
+        <developerConnection>http://kepler.onebean.net/</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>0neBean</name>
+            <email>pein790751571@aliyun.com</email>
+            <url>http://kepler.onebean.net/</url>
+        </developer>
+    </developers>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                            <compilerArguments>
+                                <bootclasspath>${JAVA_HOME}/jre/lib/rt.jar</bootclasspath>
+                            </compilerArguments>
+                        </configuration>
+                    </plugin>
+
+                    <!-- Source -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- Javadoc -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- GPG -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>repo-central</id>
+                    <name>snapshots</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>repo-central</id>
+                    <name>release</name>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerArguments>
+                        <bootclasspath>${JAVA_HOME}/jre/lib/rt.jar</bootclasspath>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>repo-private</id>
+            <name>Nexus Release Repository</name>
+            <url>http://nexus.onebean.com:8082/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>repo-private</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://nexus.onebean.com:8082/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

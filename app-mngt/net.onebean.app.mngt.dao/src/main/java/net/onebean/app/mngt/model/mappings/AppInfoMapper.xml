@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description app info mapper-->
+<!--date 2019-01-18 11:10:28-->
+<mapper namespace="net.onebean.app.mngt.dao.AppInfoDao">
+
+    <select id="findBindAppInfo" resultMap="bindAppInfo">
+         select app.open_id as appId,app.*
+         from t_app_info app where
+        exists (select u.id from t_app_api u where u.app_id = app.id  and u.is_deleted = '0')
+        and app.is_deleted = '0'
+    </select>
+
+    <select id="findBasicMenuList" resultType="net.onebean.app.mngt.api.model.FindBasicMenuListResp">
+        select
+            t.pc_page_url as pcUrl,
+            t.pc_menu_icon as icon,
+            t.app_name as name
+         from t_app_info t
+          where t.is_deleted = '0' and t.app_category = '0' and t.app_status = '0' order by t.menu_sort
+    </select>
+
+
+    <select id="findUagUserAppList" resultType="net.onebean.app.mngt.api.model.FindUagUserAppListResp">
+        SELECT a.`open_id` appId,a.`app_name` FROM `t_app_info` a
+          left join information_schema.TABLES t on SUBSTRING(t.table_name, 15) =  a.`open_id`
+        WHERE 1=1
+        AND a.is_deleted = '0'
+        AND t.table_schema = 'uag_account'
+        AND t.table_name LIKE 'uag_user_info_%'
+    </select>
+
+
+
+    <resultMap id="bindAppInfo" type="net.onebean.app.mngt.api.model.AppInfoSyncCloudResp">
+        <result column="appId" property="appId"/>
+        <association property="appInfo" column="id" javaType="net.onebean.app.mngt.api.model.AppInfoSyncVo">
+            <id column="id" property="id"/>
+            <result column="app_version" property="appVersion"/>
+            <result column="auth_type" property="authType"/>
+            <result column="app_name" property="appName"/>
+            <result column="app_category" property="appCategory"/>
+            <result column="app_status" property="appStatus"/>
+            <result column="inner_api_token" property="innerApiToken"/>
+            <result column="open_id" property="openId"/>
+            <result column="secret" property="secret"/>
+            <result column="login_type" property="loginType"/>
+            <result column="oauth_base_url" property="oauthBaseUrl"/>
+        </association>
+    </resultMap>
+
+
+
+</mapper>

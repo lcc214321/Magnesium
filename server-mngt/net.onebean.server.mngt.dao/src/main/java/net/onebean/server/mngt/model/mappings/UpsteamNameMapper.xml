@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0nebean-->
+<!--description upsteam name mapper-->
+<!--date 2019-03-01 17:40:12-->
+<mapper namespace="net.onebean.server.mngt.dao.UpsteamNameDao">
+    <select id="countUseByUpsteamName" parameterType="string" resultType="int">
+        SELECT (SELECT COUNT(s.id) FROM `t_server_info` s WHERE s.`host_path` = #{upsteamName} and s.is_deleted = '0')
+        +
+        (SELECT COUNT(n.id) FROM `t_upsteam_node` n WHERE n.`node_name` = #{upsteamName} and n.is_deleted = '0')
+    </select>
+</mapper>

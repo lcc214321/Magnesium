@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description 操作日志 mapper-->
+<!--date 2019-06-27 23:45:23-->
+<mapper namespace="net.onebean.user.mngt.dao.UagOperatorLogDao">
+
+        <sql id="basicFiled">
+                t.id,
+                t.app_name, 
+                t.operator_description, 
+                t.create_time, 
+                t.update_time, 
+                t.operator_id, 
+                t.operator_name, 
+                t.is_deleted
+        </sql>
+
+        <resultMap id="basicResultMap" type="net.onebean.user.mngt.model.UagOperatorLog">
+            <id column="id" jdbcType="INTEGER" property="id"/>
+                <result column="app_name" jdbcType="VARCHAR" property="appName"/>
+                <result column="operator_description" jdbcType="VARCHAR" property="operatorDescription"/>
+                <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+                <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+                <result column="operator_id" jdbcType="INTEGER" property="operatorId"/>
+                <result column="operator_name" jdbcType="VARCHAR" property="operatorName"/>
+                <result column="is_deleted" jdbcType="CHAR" property="isDeleted"/>
+        </resultMap>
+
+
+</mapper>

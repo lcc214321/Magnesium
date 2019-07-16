@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBeen-->
+<!--description ip白名单 mapper-->
+<!--date 2019-02-21 15:48:15-->
+<mapper namespace="net.onebean.app.mngt.dao.IpWhiteListDao">
+
+</mapper>

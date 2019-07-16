@@ -1,0 +1,130 @@
+*{margin:0;padding:0;}
+body{
+    font:12px "Microsoft YaHei",arial,serif;
+    color:#fff;
+    background:#fff;
+}
+img{border:0;}
+a{text-decoration:none;}
+
+
+
+.prompt-container{
+    width: 100%;
+}
+
+.prompt-img{
+    width: 260px;
+    height: 260px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.prompt-img img{
+    height: 100%;
+}
+
+.prompt-tip-warn{
+    margin-top: 16px;
+    margin-bottom: 22px;
+    color: #8E8E8E;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+
+}
+.prompt-tip-error{
+    font-family: MicrosoftYaHei-Bold;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.prompt-tip{
+    color: #333333;
+    text-align: center;
+    margin-top:24px;
+}
+
+.prompt-button{
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 4px;
+    font-weight: 400;
+    text-align: center;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    padding: 6px 8px;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 1px;
+    min-width: 80px;
+    user-select: none;
+    -webkit-transition: all;
+    transition: all;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    color: #333333;
+    border:1px solid #dddddd;
+}
+
+
+@media screen and (min-width:500px){
+
+    .prompt-container{
+        width:100%;
+    }
+
+    .prompt-img{
+        width: 260px;
+        height: 260px;
+    }
+
+}
+
+@media screen and (min-width:300px) and (max-width:500px){
+
+    body{
+        font-family: Helvetica, sans-serif;
+    }
+
+    .prompt-container{
+        width:100%;
+    }
+
+    .prompt-img{
+        width: 100%;
+        height: 37.5%;
+        margin-top: 178px;
+        text-align: center;
+    }
+
+    .prompt-img img{
+        width: 37.5%;
+    }
+
+    .prompt-tip{
+        width: 100%;
+        word-wrap: break-word;
+        word-break: normal;
+        margin-top: 19px;
+        font-family: PingFang-SC-Medium;
+    }
+
+    .prompt-tip-warn{
+        margin-top: 9px;
+        font-family: PingFang-SC-Medium;
+        font-family: 12px;
+    }
+    .prompt-tip-error{
+        font-family: PingFang-SC-Medium;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .prompt-button{
+        display: none;
+    }
+
+
+}
+
+

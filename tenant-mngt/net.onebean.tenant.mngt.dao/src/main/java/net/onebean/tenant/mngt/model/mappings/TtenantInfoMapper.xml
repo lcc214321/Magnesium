@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description 租户信息 mapper-->
+<!--date 2019-01-11 20:56:12-->
+<mapper namespace="net.onebean.tenant.mngt.dao.TtenantInfoDao">
+
+    <select id="findTenantCityInfoByTenantId" parameterType="string" resultType="net.onebean.tenant.mngt.api.model.TenantCityInfoVo">
+        SELECT
+      t.*,
+      c.`city_name` AS cityName,
+      p.`province_name` AS provinceName
+    FROM
+      `t_tenant_info` t
+      LEFT JOIN t_tenant_province p
+        ON p.`id` = t.`provinceCode`
+      LEFT JOIN t_tenant_city c
+        ON c.`id` = t.`cityCode`
+        WHERE t.`id`  = #{tenantId}
+    </select>
+
+    <select id="findByUnSyncStatus" parameterType="string" resultType="net.onebean.tenant.mngt.api.model.TenantInfoSyncVo">
+        select t.id,t.tenant_name,t.status,t.is_deleted FROM
+      `t_tenant_info` t
+      where t.is_sync = '0' and t.status != '0'
+    </select>
+
+
+</mapper>

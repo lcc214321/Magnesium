@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.onebean</groupId>
+        <artifactId>onebean.boot.stater</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>net.onebean.app.mngt</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>app-mngt</name>
+    <description>云控台-应用中心</description>
+
+    <properties>
+        <net.onebean.app.mngt.dao.version>${child.model.version}</net.onebean.app.mngt.dao.version>
+        <net.onebean.app.mngt.service.version>${child.model.version}</net.onebean.app.mngt.service.version>
+        <net.onebean.app.mngt.web.version>${child.model.version}</net.onebean.app.mngt.web.version>
+        <net.onebean.app.mngt.api.version>${api.rest.version}</net.onebean.app.mngt.api.version>
+        <net.onebean.core.version>${core.version}</net.onebean.core.version>
+    </properties>
+
+    <modules>
+        <module>net.onebean.app.mngt.api</module>
+        <module>net.onebean.app.mngt.dao</module>
+        <module>net.onebean.app.mngt.service</module>
+        <module>net.onebean.app.mngt.web</module>
+    </modules>
+
+</project>

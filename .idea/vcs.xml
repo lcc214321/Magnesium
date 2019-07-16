@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/api-adapter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app-mngt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eakay-api-adapter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eakay-app-mngt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eakay-mngt-portal" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eakay-server-mngt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eakay-tenant-mngt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eakay-uag" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eakay-uag-conf" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eakay-user-mngt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mngt-portal" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/server-mngt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tenant-mngt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/uag" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/uag-conf" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/user-mngt" vcs="Git" />
+  </component>
+</project>

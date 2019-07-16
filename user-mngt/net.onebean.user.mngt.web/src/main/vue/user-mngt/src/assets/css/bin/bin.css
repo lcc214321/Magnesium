@@ -1,0 +1,28 @@
+.ivu-table .table-info-row td {
+  background-color: #2db7f5;
+  color: #fff;
+}
+.ivu-table .table-error-row td {
+  background-color: #ff6600;
+  color: #fff;
+}
+.page-col {
+  margin-top: 24px;
+}
+.pagination {
+  float: right;
+  margin-bottom: 24px;
+}
+.list-button-group {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+.query-pram-from .button-group {
+  float: right;
+}
+.query-pram-from .button-group button {
+  margin-left: 5px;
+}
+.bread-crumb {
+  margin: 24px;
+}

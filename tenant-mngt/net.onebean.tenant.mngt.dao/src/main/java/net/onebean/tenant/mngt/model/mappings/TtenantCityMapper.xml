@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description 城市 mapper-->
+<!--date 2019-01-11 20:55:32-->
+<mapper namespace="net.onebean.tenant.mngt.dao.TtenantCityDao">
+    <select id="findMaxCode" resultType="int">
+        select c.city_code+1 from t_tenant_city c order by c.city_code desc limit 1
+    </select>
+
+</mapper>

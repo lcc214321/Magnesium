@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.onebean</groupId>
+        <artifactId>onebean.boot.stater</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>net.onebean.tenant.mngt</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>tenant-mngt</name>
+    <description>云控台-租户管理</description>
+
+    <properties>
+        <net.onebean.tenant.mngt.dao.version>${child.model.version}</net.onebean.tenant.mngt.dao.version>
+        <net.onebean.tenant.mngt.service.version>${child.model.version}</net.onebean.tenant.mngt.service.version>
+        <net.onebean.tenant.mngt.web.version>${child.model.version}</net.onebean.tenant.mngt.web.version>
+        <net.onebean.tenant.mngt.api.version>${api.rest.version}</net.onebean.tenant.mngt.api.version>
+        <net.onebean.core.version>${core.version}</net.onebean.core.version>
+    </properties>
+
+    <modules>
+        <module>net.onebean.tenant.mngt.api</module>
+        <module>net.onebean.tenant.mngt.dao</module>
+        <module>net.onebean.tenant.mngt.service</module>
+        <module>net.onebean.tenant.mngt.web</module>
+    </modules>
+
+</project>
