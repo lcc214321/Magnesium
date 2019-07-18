@@ -8,12 +8,12 @@ import net.onebean.app.mngt.provider.mq.DevopsUpdateServerApiSender;
 import net.onebean.app.mngt.service.AppApiService;
 import net.onebean.app.mngt.service.AppInfoService;
 import net.onebean.app.mngt.vo.*;
-import net.onebean.common.exception.BusinessException;
-import net.onebean.common.model.BaseResponse;
 import net.onebean.core.BasePaginationRequest;
 import net.onebean.core.BasePaginationResponse;
+import net.onebean.core.BaseResponse;
 import net.onebean.core.Json.EnableEnumDeserialize;
 import net.onebean.core.Pagination;
+import net.onebean.core.error.BusinessException;
 import net.onebean.core.extend.Sort;
 import net.onebean.server.mngt.api.model.*;
 import net.onebean.server.mngt.api.service.ApiInfoApi;
@@ -194,7 +194,7 @@ public class AppInfoController {
                 return response;
             }
             logger.debug("AppInfoController findServerByName method request = "+ JSON.toJSONString(request, SerializerFeature.WriteMapNullValue));
-            net.onebean.common.model.only.serializer.json.BasePaginationResponse<ServerBasicInfo> jsonResp =  serverInfoApi.findServerByName(request);
+            BasePaginationResponse<ServerBasicInfo> jsonResp =  serverInfoApi.findServerByName(request);
             BeanUtils.copyProperties(response,jsonResp);
         } catch (BusinessException e) {
             response.setErrCode(e.getCode());

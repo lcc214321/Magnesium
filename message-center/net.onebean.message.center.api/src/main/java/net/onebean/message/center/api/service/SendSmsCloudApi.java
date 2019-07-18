@@ -1,6 +1,6 @@
 package net.onebean.message.center.api.service;
 
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.BaseResponse;
 import net.onebean.message.center.api.fallback.SendSmsCloudApiFallBack;
 import net.onebean.message.center.api.model.SendSmsMsgReq;
 import org.springframework.cloud.netflix.feign.FeignClient;

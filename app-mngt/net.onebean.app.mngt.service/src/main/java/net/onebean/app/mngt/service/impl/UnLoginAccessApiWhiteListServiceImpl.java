@@ -7,7 +7,7 @@ import net.onebean.app.mngt.dao.UnLoginAccessApiWhiteListDao;
 import net.onebean.app.mngt.model.UnLoginAccessApiWhiteList;
 import net.onebean.app.mngt.service.UnLoginAccessApiWhiteListService;
 import net.onebean.app.mngt.vo.UnLoginAccessApiWhiteListVo;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.core.BaseBiz;
 import net.onebean.core.Condition;
 import net.onebean.core.Pagination;

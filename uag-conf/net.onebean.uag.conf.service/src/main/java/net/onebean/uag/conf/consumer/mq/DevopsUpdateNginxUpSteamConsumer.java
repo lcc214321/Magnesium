@@ -1,6 +1,6 @@
 package net.onebean.uag.conf.consumer.mq;
 
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.uag.conf.common.ErrorCodesEnum;
 import net.onebean.uag.conf.service.ManualUpdateServerNodeService;
 import com.rabbitmq.client.Channel;

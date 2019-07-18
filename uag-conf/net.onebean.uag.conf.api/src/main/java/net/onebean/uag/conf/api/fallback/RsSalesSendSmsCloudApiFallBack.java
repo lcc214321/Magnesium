@@ -1,6 +1,6 @@
 package net.onebean.uag.conf.api.fallback;
 
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.BaseResponse;
 import net.onebean.uag.conf.api.model.SendLoginSmsReq;
 import net.onebean.uag.conf.api.service.RsSalesSendSmsCloudApi;
 

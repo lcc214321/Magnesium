@@ -1,8 +1,8 @@
 package net.onebean.user.mngt.action.userInfo;
 
 import net.onebean.app.mngt.api.service.AppInfoApi;
-import net.onebean.common.exception.BusinessException;
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.error.BusinessException;
+import net.onebean.core.BaseResponse;
 import net.onebean.core.BasePaginationRequest;
 import net.onebean.core.BasePaginationResponse;
 import net.onebean.core.Pagination;

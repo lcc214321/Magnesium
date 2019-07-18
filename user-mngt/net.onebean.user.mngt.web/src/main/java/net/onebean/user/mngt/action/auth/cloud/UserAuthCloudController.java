@@ -1,7 +1,7 @@
 package net.onebean.user.mngt.action.auth.cloud;
 
-import net.onebean.common.exception.BusinessException;
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.error.BusinessException;
+import net.onebean.core.BaseResponse;
 import net.onebean.user.mngt.api.model.CheckUagLoginStatusReq;
 import net.onebean.user.mngt.common.ErrorCodesEnum;
 import net.onebean.user.mngt.service.UagUserInfoService;

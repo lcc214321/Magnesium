@@ -1,7 +1,7 @@
 package net.onebean.server.mngt.action.upsteamNodeInfo.cloud;
 
-import net.onebean.common.exception.BusinessException;
-import net.onebean.common.model.only.serializer.json.BasePaginationResponse;
+import net.onebean.core.error.BusinessException;
+import net.onebean.core.BasePaginationResponse;
 import net.onebean.server.mngt.api.model.UpSteamSyncNodeVo;
 import net.onebean.server.mngt.common.ErrorCodesEnum;
 import net.onebean.server.mngt.service.UpSteamNodeService;

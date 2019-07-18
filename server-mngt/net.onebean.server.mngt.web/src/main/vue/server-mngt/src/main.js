@@ -23,7 +23,7 @@ const vuex = vuexConfig.initsStoreInstance
 
 router.beforeEach((to, from, next) => {
   if (to.path != '/err' && Object.keys(vuex.state.uagCurrentLoginUserInfo).length <= 0) {
-    // next('/err')
+    next('/err')
   }
   next()
 })

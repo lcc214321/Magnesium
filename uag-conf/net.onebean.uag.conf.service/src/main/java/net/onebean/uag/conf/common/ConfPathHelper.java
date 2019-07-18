@@ -1,6 +1,6 @@
 package net.onebean.uag.conf.common;
 
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.util.DateUtils;
 import net.onebean.util.PropUtil;
 import net.onebean.util.StringUtils;
@@ -11,7 +11,6 @@ import java.nio.file.Paths;
 public class ConfPathHelper {
 
     private final static String UAG_LOCAL_PATN_KEY = "uag.local.relative.path";
-    private final static String UAG_REMOTE_PATN_KEY = "uag.remote.base.path";
     private final static String UAG_BACKUP_PATN_KEY = "uag.remote.backup.path";
     private final static String UAG_DELETE_PATN_KEY = "uag.remote.delete.path";
 
@@ -21,13 +20,14 @@ public class ConfPathHelper {
     public static String getLocalConfDir() {
         return Paths.get(ConfPathHelper.getLocalBasePath(), "conf.d").toFile().getAbsolutePath();
     }
+
     /**
      * 获取远程删除路径
      */
     public static String getRemoteDeletePath() {
-        String deletePath = PropUtil.getInstance().getConfig(UAG_DELETE_PATN_KEY,PropUtil.DEFLAULT_NAME_SPACE);
-        if (StringUtils.isEmpty(deletePath)){
-             throw new BusinessException(ErrorCodesEnum.READ_APOLLO_ERROR.code(),ErrorCodesEnum.READ_APOLLO_ERROR.msg());
+        String deletePath = PropUtil.getInstance().getConfig(UAG_DELETE_PATN_KEY, PropUtil.DEFLAULT_NAME_SPACE);
+        if (StringUtils.isEmpty(deletePath)) {
+            throw new BusinessException(ErrorCodesEnum.READ_APOLLO_ERROR.code(), ErrorCodesEnum.READ_APOLLO_ERROR.msg());
         }
         return deletePath;
     }
@@ -37,13 +37,13 @@ public class ConfPathHelper {
      * 返回产生conf文件的根路径
      */
     public static String getLocalBasePath() {
-        String uagPath = PropUtil.getInstance().getConfig(UAG_LOCAL_PATN_KEY,PropUtil.DEFLAULT_NAME_SPACE);
-        if (StringUtils.isEmpty(uagPath)){
-            throw new BusinessException(ErrorCodesEnum.VALUE_CAN_NOT_BE_EMPTY_ERR.code(),ErrorCodesEnum.VALUE_CAN_NOT_BE_EMPTY_ERR.msg());
+        String uagPath = PropUtil.getInstance().getConfig(UAG_LOCAL_PATN_KEY, PropUtil.DEFLAULT_NAME_SPACE);
+        if (StringUtils.isEmpty(uagPath)) {
+            throw new BusinessException(ErrorCodesEnum.VALUE_CAN_NOT_BE_EMPTY_ERR.code(), ErrorCodesEnum.VALUE_CAN_NOT_BE_EMPTY_ERR.msg());
         }
         String localBasePath = StringUtils.toStrTrim(uagPath);
         if (localBasePath.endsWith("/")) {
-            localBasePath = localBasePath.substring(0, localBasePath.length()-1);
+            localBasePath = localBasePath.substring(0, localBasePath.length() - 1);
         }
         return localBasePath;
     }
@@ -63,17 +63,6 @@ public class ConfPathHelper {
         return logFile.exists() ? logFile.getAbsolutePath() : null;
     }
 
-    /**
-     * 返回远端nginx配置根路径
-     */
-    public static String getRemoteBasePath() {
-        String remoteBasePath = PropUtil.getInstance().getConfig(UAG_REMOTE_PATN_KEY,PropUtil.DEFLAULT_NAME_SPACE);
-        String remoteDir = StringUtils.toStrTrim(remoteBasePath);
-        if (remoteDir.endsWith("/")) {
-            remoteDir = remoteDir.substring(0, remoteDir.length()-1);
-        }
-        return remoteDir;
-    }
 
     /*获取服务器上相对路径*/
     public static String getEcsRelativePath(String path) {
@@ -86,13 +75,13 @@ public class ConfPathHelper {
      * 远端nginx的备份路径
      */
     public static String getRemoteBackupPath() {
-        String remoteBackupDir = PropUtil.getInstance().getConfig(UAG_BACKUP_PATN_KEY,PropUtil.DEFLAULT_NAME_SPACE);
-        if(StringUtils.isEmpty(remoteBackupDir)){
-            throw  new BusinessException(ErrorCodesEnum.READ_APOLLO_EMPTY_VALUE.code(),ErrorCodesEnum.READ_APOLLO_EMPTY_VALUE.msg());
+        String remoteBackupDir = PropUtil.getInstance().getConfig(UAG_BACKUP_PATN_KEY, PropUtil.DEFLAULT_NAME_SPACE);
+        if (StringUtils.isEmpty(remoteBackupDir)) {
+            throw new BusinessException(ErrorCodesEnum.READ_APOLLO_EMPTY_VALUE.code(), ErrorCodesEnum.READ_APOLLO_EMPTY_VALUE.msg());
         }
         remoteBackupDir = StringUtils.toStrTrim(remoteBackupDir);
         if (remoteBackupDir.endsWith("/")) {
-            remoteBackupDir = remoteBackupDir.substring(0, remoteBackupDir.length()-1);
+            remoteBackupDir = remoteBackupDir.substring(0, remoteBackupDir.length() - 1);
         }
         return remoteBackupDir + "/" + DateUtils.getDetailTime();
     }

@@ -1,6 +1,6 @@
 package net.onebean.uag.conf.api.service;
 
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.BaseResponse;
 import net.onebean.uag.conf.api.fallback.RsSalesSendSmsCloudApiFallBack;
 import net.onebean.uag.conf.api.model.SendLoginSmsReq;
 import org.springframework.cloud.netflix.feign.FeignClient;

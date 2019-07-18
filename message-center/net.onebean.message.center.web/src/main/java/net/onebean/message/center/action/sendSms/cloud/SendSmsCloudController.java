@@ -1,7 +1,7 @@
 package net.onebean.message.center.action.sendSms.cloud;
 
-import net.onebean.common.exception.BusinessException;
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.BaseResponse;
+import net.onebean.core.error.BusinessException;
 import net.onebean.message.center.api.model.SendSmsMsgReq;
 import net.onebean.message.center.common.ErrorCodesEnum;
 import net.onebean.message.center.service.SmsMessageSenderService;

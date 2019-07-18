@@ -1,6 +1,7 @@
 package net.onebean.api.adapter.common;
 
 public enum MqQueueNameEnum {
+    AUTH_SET_ACCESS_TOKEN_CACHE("auth.set.access.token.cache"),
     MESSAGE_CENTER_SEND_SMS_MESSAGE("message.center.send.sms.message");
     private String name;
 

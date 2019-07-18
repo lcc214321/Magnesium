@@ -1,7 +1,7 @@
 package net.onebean.uag.conf.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.component.redis.IRedisService;
 import net.onebean.uag.conf.api.model.SendLoginSmsReq;
 import net.onebean.uag.conf.common.CacheConstants;

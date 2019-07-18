@@ -17,7 +17,7 @@ import net.onebean.app.mngt.service.AppInfoService;
 import net.onebean.app.mngt.service.UnLoginAccessApiWhiteListService;
 import net.onebean.app.mngt.vo.AppInfoQueryRequest;
 import net.onebean.app.mngt.vo.AppInfoVo;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.core.BaseBiz;
 import net.onebean.core.Condition;
 import net.onebean.core.Pagination;

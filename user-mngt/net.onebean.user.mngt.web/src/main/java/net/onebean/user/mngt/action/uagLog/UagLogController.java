@@ -1,7 +1,7 @@
 package net.onebean.user.mngt.action.uagLog;
 
 
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.core.BasePaginationRequest;
 import net.onebean.core.BasePaginationResponse;
 import net.onebean.core.Pagination;
@@ -59,4 +59,5 @@ public class UagLogController {
         }
         return response;
     }
+
 }

@@ -2,7 +2,7 @@ package net.onebean.app.mngt.api.fallback;
 
 import net.onebean.app.mngt.api.model.IpWhiteListVo;
 import net.onebean.app.mngt.api.service.IpWhiteApi;
-import net.onebean.common.model.only.serializer.json.BasePaginationResponse;
+import net.onebean.core.BasePaginationResponse;
 
 public class IpWhiteApiFallBack implements IpWhiteApi {
 

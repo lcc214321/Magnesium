@@ -1,6 +1,6 @@
 package net.onebean.server.mngt.api.service;
 
-import net.onebean.common.model.only.serializer.json.BasePaginationResponse;
+import net.onebean.core.BasePaginationResponse;
 import net.onebean.server.mngt.api.fallback.NginxInfoApiFallBack;
 import net.onebean.server.mngt.api.model.NginxNodeSyncVo;
 import org.springframework.cloud.netflix.feign.FeignClient;

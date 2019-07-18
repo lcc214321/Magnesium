@@ -1,4 +1,4 @@
-package net.onebean.api.adapter.vo;
+package net.onebean.api.adapter.api.model;
 
 /**
  * 获取AccToken 的请求体
@@ -19,6 +19,26 @@ public class GetAccTokenVo {
     private String deviceToken;
     /*用户的ID*/
     private String customerId;
+
+    private String accessTokenExpire;
+
+    private String accessTokenCacheKey;
+
+    public String getAccessTokenCacheKey() {
+        return accessTokenCacheKey;
+    }
+
+    public void setAccessTokenCacheKey(String accessTokenCacheKey) {
+        this.accessTokenCacheKey = accessTokenCacheKey;
+    }
+
+    public String getAccessTokenExpire() {
+        return accessTokenExpire;
+    }
+
+    public void setAccessTokenExpire(String accessTokenExpire) {
+        this.accessTokenExpire = accessTokenExpire;
+    }
 
     public String getCustomerId() {
         return customerId;

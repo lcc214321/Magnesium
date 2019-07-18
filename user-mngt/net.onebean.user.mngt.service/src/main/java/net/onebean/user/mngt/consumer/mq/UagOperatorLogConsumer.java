@@ -1,7 +1,7 @@
 package net.onebean.user.mngt.consumer.mq;
 
 import com.alibaba.fastjson.JSON;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.core.form.Parse;
 import net.onebean.uag.log.vo.UagOperationLogMqReq;
 import net.onebean.user.mngt.common.ErrorCodesEnum;

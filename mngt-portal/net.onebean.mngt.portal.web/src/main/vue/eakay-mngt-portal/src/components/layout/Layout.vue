@@ -103,7 +103,7 @@
           active-name="1">
           <div class="layout-logo"
             :style="{backgroundImage: 'url(' + logoImg + ')' }"></div>
-          <div class="layout-logo-title"><span class="logo-title">易开云管控台</span></div>
+          <div class="layout-logo-title"><span class="logo-title">云管控台</span></div>
           <div class="layout-nav">
             <span class="nav-username">{{this.$store.state.uagCurrentLoginUserInfo.uagUserNickName}}</span>
             <a class="nav-logout"

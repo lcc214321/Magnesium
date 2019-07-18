@@ -12,9 +12,15 @@ public class RabbitMqQueueDefined {
     public Queue devopsUpdateServerApi() {
         return new Queue(MqQueueNameEnum.DEVOPS_UPDATE_NGINX_UPSTEAM_NODE.getName());
     }
+
     @Bean
     public Queue devopsUpdateServerOrApi() {
         return new Queue(MqQueueNameEnum.DEVOPS_UPDATE_SERVER_OR_API.getName());
+    }
+
+    @Bean
+    public Queue authSetAccessTokenCache() {
+        return new Queue(MqQueueNameEnum.AUTH_SET_ACCESS_TOKEN_CACHE.getName());
     }
 
 

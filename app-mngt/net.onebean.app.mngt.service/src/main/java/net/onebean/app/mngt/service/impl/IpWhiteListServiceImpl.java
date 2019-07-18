@@ -9,7 +9,7 @@ import net.onebean.app.mngt.service.IpWhiteListService;
 import net.onebean.app.mngt.vo.IpWhiteListAddReq;
 import net.onebean.app.mngt.vo.IpWhiteListQueryReq;
 import net.onebean.app.mngt.api.model.IpWhiteListVo;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.core.BaseBiz;
 import net.onebean.core.Condition;
 import net.onebean.core.Pagination;

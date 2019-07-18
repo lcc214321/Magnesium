@@ -37,7 +37,7 @@ constants.MYSQL_PASSWORD = "mysql_password";
 
 
 -- config.json配置文件路径
-constants.configPath = "/data/application/onebean-uag/conf/config.json";
+constants.configPath = "/usr/program/web/Magnesiumo/uag/conf/config.json";
 -- uag标识
 constants.UAG = "UAG";
 constants.UAG_HOST_ARRAY = "preuag.onebean.cn,uag.onebean.cn";

@@ -1,7 +1,7 @@
 package net.onebean.sso.api.service;
 
-import net.onebean.common.model.BaseResponse;
 import net.onebean.component.SpringUtil;
+import net.onebean.core.BaseResponse;
 import net.onebean.core.model.UagLoginSessionInfo;
 import net.onebean.sso.api.common.ConstantEnum;
 import net.onebean.user.mngt.api.model.CheckUagLoginStatusReq;

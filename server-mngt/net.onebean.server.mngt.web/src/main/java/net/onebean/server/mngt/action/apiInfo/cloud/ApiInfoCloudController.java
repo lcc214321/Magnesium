@@ -2,8 +2,8 @@ package net.onebean.server.mngt.action.apiInfo.cloud;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import net.onebean.common.exception.BusinessException;
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.error.BusinessException;
+import net.onebean.core.BaseResponse;
 import net.onebean.server.mngt.api.model.AppApiRelationSyncResqVo;
 import net.onebean.server.mngt.api.model.AppApiRelationshipReq;
 import net.onebean.server.mngt.api.model.AppApiRelationshipResp;

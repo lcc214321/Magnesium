@@ -1,6 +1,6 @@
 package net.onebean.uag.conf.api.service;
 
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.BaseResponse;
 import net.onebean.uag.conf.api.fallback.NginxInfoCloudApiFallBack;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;

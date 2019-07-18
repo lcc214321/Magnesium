@@ -48,7 +48,7 @@
 <template>
   <Header class="dev-header">
     <div class="layout-logo" :style="{backgroundImage: 'url(' + logoImg + ')' }"></div>
-    <div class="layout-logo-title"><span class="logo-title">易开单点登录系统</span></div>
+    <div class="layout-logo-title"><span class="logo-title">单点登录系统</span></div>
   </Header>
 
 </template>

@@ -27,7 +27,7 @@
           left join information_schema.TABLES t on SUBSTRING(t.table_name, 15) =  a.`open_id`
         WHERE 1=1
         AND a.is_deleted = '0'
-        AND t.table_schema = 'uag_account'
+        AND t.table_schema = 'mgnesium_uag_account'
         AND t.table_name LIKE 'uag_user_info_%'
     </select>
 

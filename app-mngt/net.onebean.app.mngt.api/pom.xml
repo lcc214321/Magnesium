@@ -57,12 +57,12 @@
                 <repository>
                     <id>repo-private</id>
                     <name>Nexus Release Repository</name>
-                    <url>http://nexus.onebean.com:8082/repository/maven-releases/</url>
+                    <url>http://nexus.onebean.net:8082/repository/maven-releases/</url>
                 </repository>
                 <snapshotRepository>
                     <id>repo-private</id>
                     <name>Nexus Snapshot Repository</name>
-                    <url>http://nexus.onebean.com:8082/repository/maven-snapshots/</url>
+                    <url>http://nexus.onebean.net:8082/repository/maven-snapshots/</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>

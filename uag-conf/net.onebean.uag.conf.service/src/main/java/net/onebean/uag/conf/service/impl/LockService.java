@@ -1,7 +1,7 @@
 package net.onebean.uag.conf.service.impl;
 
 
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.uag.conf.common.ErrorCodesEnum;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;

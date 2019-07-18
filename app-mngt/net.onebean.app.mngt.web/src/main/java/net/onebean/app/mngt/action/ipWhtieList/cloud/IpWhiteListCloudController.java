@@ -3,7 +3,7 @@ package net.onebean.app.mngt.action.ipWhtieList.cloud;
 import net.onebean.app.mngt.api.model.IpWhiteListVo;
 import net.onebean.app.mngt.common.ErrorCodesEnum;
 import net.onebean.app.mngt.service.IpWhiteListService;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.core.BasePaginationResponse;
 import net.onebean.util.DateUtils;
 import org.slf4j.Logger;

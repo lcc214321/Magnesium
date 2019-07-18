@@ -2,7 +2,7 @@ package net.onebean.message.center.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.message.center.api.model.SendSmsMsgReq;
 import net.onebean.message.center.common.ErrorCodesEnum;
 import net.onebean.message.center.common.MsgypeEnum;

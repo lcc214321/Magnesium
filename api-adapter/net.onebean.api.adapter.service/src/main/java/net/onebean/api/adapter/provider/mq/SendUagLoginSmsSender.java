@@ -3,7 +3,7 @@ package net.onebean.api.adapter.provider.mq;
 import com.alibaba.fastjson.JSON;
 import net.onebean.api.adapter.common.ErrorCodesEnum;
 import net.onebean.api.adapter.common.MqQueueNameEnum;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.message.center.api.model.SendSmsMsgReq;
 import net.onebean.util.StringUtils;
 import org.slf4j.Logger;

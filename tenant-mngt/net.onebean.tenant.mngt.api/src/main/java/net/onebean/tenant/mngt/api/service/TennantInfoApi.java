@@ -1,6 +1,6 @@
 package net.onebean.tenant.mngt.api.service;
 
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.BaseResponse;
 import net.onebean.tenant.mngt.api.fallback.TennantInfoApiFallBack;
 import net.onebean.tenant.mngt.api.model.FindTtenantInfoVo;
 import net.onebean.tenant.mngt.api.model.ModifyTtenantInfoBatchSyncFlagReq;

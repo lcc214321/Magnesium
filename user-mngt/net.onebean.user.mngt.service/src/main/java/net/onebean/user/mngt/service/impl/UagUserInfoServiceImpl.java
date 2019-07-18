@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import net.onebean.app.mngt.api.model.AppInfoSyncVo;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import net.onebean.component.PasswordEncoder;
 import net.onebean.component.redis.IRedisService;
 import net.onebean.core.BaseSplitBizManual;
@@ -46,7 +46,7 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
 
     private final static Logger logger = LoggerFactory.getLogger(UagUserInfoServiceImpl.class);
     private final static String DEFAULT_PASSWORD = "123456";
-    private final static String TEMPLATE_FILE_PATH = "templates-customer/vm/initUagAccountTable.vm";
+    private final static String TEMPLATE_FILE_PATH = "/account/initUagAccountTable.ftl";
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
@@ -536,7 +536,7 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
     private String mergeTemplate(String appId) {
         JSONObject param = new JSONObject();
         param.put("appId", appId);
-        return VelocityUtils.generateStringFromVelocity(param, TEMPLATE_FILE_PATH);
+        return FreeMarkerTemplateUtils.generateStringFromFreeMarker(param, TEMPLATE_FILE_PATH);
     }
 
     @Override

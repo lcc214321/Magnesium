@@ -1,9 +1,9 @@
 package net.onebean.uag.conf.service.impl;
 
-import net.onebean.common.exception.BusinessException;
-import net.onebean.common.model.only.serializer.json.BasePaginationResponse;
 import net.onebean.component.jsch.remote.JschsFactory;
 import net.onebean.component.jsch.remote.ShellsCommand;
+import net.onebean.core.BasePaginationResponse;
+import net.onebean.core.error.BusinessException;
 import net.onebean.core.form.Parse;
 import net.onebean.server.mngt.api.model.AccessAuthTypeEnum;
 import net.onebean.server.mngt.api.model.NginxNodeSyncVo;
@@ -61,12 +61,12 @@ public class UpgradeNginxConfServiceImpl implements UpgradeNginxConfService {
         return shellsCommand;
     }
 
-    public String backupRemoteNginxConf(ShellsCommand shellsCommand, String backupPath) {
+    public String backupRemoteNginxConf(ShellsCommand shellsCommand, String backupPath, String remoteBasePath) {
         /*执行以下命令 生成备份目录 拷贝远程base目录下conf到备份目录*/
         logger.info("Backup remote nginx conf start. Remote nginx server is {}", shellsCommand.getConfig().getHost());
         String destinationPath = backupPath + "/conf.d";
         try {
-            shellsCommand.exec("mkdir -p " + destinationPath + ";cp -rf " + ConfPathHelper.getRemoteBasePath() + "/conf.d " + backupPath);
+            shellsCommand.exec("mkdir -p " + destinationPath + ";cp -rf " + remoteBasePath + "/conf.d " + backupPath);
         } catch (BusinessException e) { // 此备份异常暂时只捕获打印日志
             logger.warn("backup remote nginx conf exception. Remote nginx server is " + shellsCommand.getConfig().getHost(), e);
         }
@@ -74,7 +74,7 @@ public class UpgradeNginxConfServiceImpl implements UpgradeNginxConfService {
         return backupPath;
     }
 
-    public void deleteRemoteNginxConf(ShellsCommand shellsCommand, List<String> removeEntities) {
+    public void deleteRemoteNginxConf(ShellsCommand shellsCommand, List<String> removeEntities, String remoteBasePath) {
         /*该删除操作只是按照时间创建temp文件夹  将文件归置到该目录下*/
         if (CollectionUtil.isEmpty(removeEntities)) {
             logger.warn("Delete remote nginx conf method ,the param removeEntities is none.");
@@ -87,11 +87,11 @@ public class UpgradeNginxConfServiceImpl implements UpgradeNginxConfService {
         Iterator<String> iterator = removeEntities.iterator();
         if (iterator.hasNext()) {
             String tmpBak = tmp + "/" + i;
-            removePaths.append("mkdir -p " + tmpBak).append(" ; mv -f ").append(ConfPathHelper.getRemoteBasePath()).append("/").append(iterator.next()).append(" ").append(tmpBak);
+            removePaths.append("mkdir -p " + tmpBak).append(" ; mv -f ").append(remoteBasePath).append("/").append(iterator.next()).append(" ").append(tmpBak);
             while (iterator.hasNext()) {
                 i++;
                 tmpBak = tmp + "/" + i;
-                removePaths.append(" ; mkdir -p " + tmpBak).append(" ; mv -f ").append(ConfPathHelper.getRemoteBasePath()).append("/").append(iterator.next()).append(" ").append(tmpBak);
+                removePaths.append(" ; mkdir -p " + tmpBak).append(" ; mv -f ").append(remoteBasePath).append("/").append(iterator.next()).append(" ").append(tmpBak);
             }
         }
         try {
@@ -156,6 +156,10 @@ public class UpgradeNginxConfServiceImpl implements UpgradeNginxConfService {
         ShellsCommand shellsCommand = getShellsCommand(nginxInfo);
         logger.info("Roll back remote nginx conf start. Remote nginx server is {}", shellsCommand.getConfig().getHost());
         //将涉及到更新的目录删除，然后将备份目录中的相关目录覆盖过来,然后再将删除文件全部还原回来
+        String remoteBasePath = Optional.of(nginxInfo).map(NginxNodeSyncVo::getConfPath).orElse("");
+        if (StringUtils.isEmpty(remoteBasePath)) {
+            throw new BusinessException(ErrorCodesEnum.INVALID_OPERATION_LINUX_PATH.code(), ErrorCodesEnum.INVALID_OPERATION_LINUX_PATH.msg()+" remoteBasePath is empty");
+        }
         String removeTmpPath = ConfPathHelper.getRemoteDeletePath()+"/" + DateUtils.getDetailTime();
         StringBuilder removeCommand = new StringBuilder();
         StringBuilder copyCommand = new StringBuilder();
@@ -168,9 +172,9 @@ public class UpgradeNginxConfServiceImpl implements UpgradeNginxConfService {
                 }
                 String fullPathEntity;
                 if (coverEntity.startsWith("/")) {
-                    fullPathEntity = ConfPathHelper.getRemoteBasePath() + coverEntity;
+                    fullPathEntity = remoteBasePath + coverEntity;
                 } else {
-                    fullPathEntity = ConfPathHelper.getRemoteBasePath() + "/" + coverEntity;
+                    fullPathEntity = remoteBasePath + "/" + coverEntity;
                 }
                 String subRemoveTmpPath = removeTmpPath + "/" + i++;
                 removeCommand.append("mkdir -p ").append(subRemoveTmpPath).append(";").append("mv ").append(fullPathEntity).append(" ").append(subRemoveTmpPath).append(";");
@@ -185,9 +189,9 @@ public class UpgradeNginxConfServiceImpl implements UpgradeNginxConfService {
                 }
                 String fullPathEntity;
                 if (removeEntity.startsWith("/")) {
-                    fullPathEntity = ConfPathHelper.getRemoteBasePath() + removeEntity;
+                    fullPathEntity = remoteBasePath + removeEntity;
                 } else {
-                    fullPathEntity = ConfPathHelper.getRemoteBasePath() + "/" + removeEntity;
+                    fullPathEntity = remoteBasePath + "/" + removeEntity;
                 }
                 copyCommand.append("mkdir -p ").append(IOUtils.getPathOfFile(fullPathEntity)).append(";");
                 // remove destination entity first
@@ -215,22 +219,26 @@ public class UpgradeNginxConfServiceImpl implements UpgradeNginxConfService {
         /*获取shell 命令行*/
         ShellsCommand remoteNginxShells = getShellsCommand(nginxInfo);
         logger.info("Update single remote nginx server , nginx ip is {}", remoteNginxShells.getConfig().getHost());
-        String remoteBackupPath = null;
+        String remoteBackupPath;
+        String remoteBasePath;
         try {
+            remoteBasePath = Optional.of(nginxInfo).map(NginxNodeSyncVo::getConfPath).orElse("");
+            if (StringUtils.isEmpty(remoteBasePath)){
+                throw new BusinessException(ErrorCodesEnum.UPDATE_NGINX_SAFE_ROLL_BACK_ERROR.code(), ErrorCodesEnum.UPDATE_NGINX_SAFE_ROLL_BACK_ERROR.msg() + " remoteBasePath is empty");
+            }
             /*先备份远程nginx配置*/
-            remoteBackupPath = backupRemoteNginxConf(remoteNginxShells, unifiedRemoteBackupPath);
-
+            remoteBackupPath = backupRemoteNginxConf(remoteNginxShells, unifiedRemoteBackupPath,remoteBasePath);
             /*删除必要的条目*/
             if (CollectionUtil.isNotEmpty(removeEntities)) {
-                deleteRemoteNginxConf(remoteNginxShells, removeEntities);
+                deleteRemoteNginxConf(remoteNginxShells, removeEntities,remoteBasePath);
             }
 
             /*remote push  将本地打包文件推送到远程nginx上*/
             logger.info("Pushing local files to nginx server , nginx ip is {}", remoteNginxShells.getConfig().getHost());
-            remoteNginxShells.scp(ConfPathHelper.getLocalTarFilePath(), ConfPathHelper.getRemoteBasePath());
+            remoteNginxShells.scp(ConfPathHelper.getLocalTarFilePath(), remoteBasePath);
 
             /*使用最新的配置进行覆盖*/
-            remoteNginxShells.exec("tar xf " + ConfPathHelper.getRemoteBasePath() + "/config.tar.gz -C " + ConfPathHelper.getRemoteBasePath());
+            remoteNginxShells.exec("tar xf " + remoteBasePath + "/config.tar.gz -C " + remoteBasePath);
             /*校验nginx和重新reload*/
             reloadNginx(remoteNginxShells, remoteBackupPath, isSync);
         } catch (Exception e) {

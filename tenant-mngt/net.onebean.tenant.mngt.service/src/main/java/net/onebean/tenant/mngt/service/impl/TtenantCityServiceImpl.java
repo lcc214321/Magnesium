@@ -2,10 +2,10 @@ package net.onebean.tenant.mngt.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import net.onebean.common.exception.BusinessException;
 import net.onebean.core.BaseBiz;
 import net.onebean.core.Condition;
 import net.onebean.core.Pagination;
+import net.onebean.core.error.BusinessException;
 import net.onebean.core.extend.Sort;
 import net.onebean.tenant.mngt.api.model.FIndListTenantCityResp;
 import net.onebean.tenant.mngt.api.model.FIndTenantCityByNameReq;

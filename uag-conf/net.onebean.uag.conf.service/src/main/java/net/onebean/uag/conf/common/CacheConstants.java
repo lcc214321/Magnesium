@@ -10,6 +10,7 @@ import net.onebean.util.StringUtils;
  */
 public class CacheConstants {
 
+	public static final String ACCESSTOKEN_KEY = "UAG:OPENAPI:ACCESSTOKEN";
 	public static final String APP_API_RELATION = "UAG:OPENAPI:APP_API_RELATION";
 	public static final String URI_API_RELATION = "UAG:OPENAPI:URI_API_RELATION";
 	public static final String APP_INFO = "UAG:OPENAPI:APP_INFO";

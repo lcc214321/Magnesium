@@ -1,6 +1,6 @@
 package net.onebean.server.mngt.api.fallback;
 
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.BaseResponse;
 import net.onebean.server.mngt.api.model.AppApiRelationSyncResqVo;
 import net.onebean.server.mngt.api.model.AppApiRelationshipReq;
 import net.onebean.server.mngt.api.model.AppApiRelationshipResp;

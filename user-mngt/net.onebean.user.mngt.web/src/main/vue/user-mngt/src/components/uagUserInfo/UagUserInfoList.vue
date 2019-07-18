@@ -132,7 +132,7 @@ export default {
         { title: '用户名', key: 'username' },
         { title: '创建时间', key: 'createTime' },
         { title: '修改时间', key: 'updateTime' },
-        { title: '操作人', key: 'ratorName' },
+        { title: '操作人', key: 'operatorName' },
         { title: '操作', slot: 'action', width: 250, align: 'center' }
       ]
     }

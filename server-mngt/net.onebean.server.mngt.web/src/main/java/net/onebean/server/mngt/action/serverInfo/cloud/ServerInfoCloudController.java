@@ -2,8 +2,8 @@ package net.onebean.server.mngt.action.serverInfo.cloud;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import net.onebean.common.exception.BusinessException;
-import net.onebean.common.model.only.serializer.json.BasePaginationResponse;
+import net.onebean.core.error.BusinessException;
+import net.onebean.core.BasePaginationResponse;
 import net.onebean.server.mngt.api.model.FindServerByNameReq;
 import net.onebean.server.mngt.api.model.ServerBasicInfo;
 import net.onebean.server.mngt.api.service.ServerInfoApi;

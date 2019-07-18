@@ -1,8 +1,8 @@
 {
 	"redis_ip": "0.0.0.0",
-    "redis_port": 6381,
+    "redis_port": 6379,
     "redis_password": "123456",
-    "redis_select": 3,
+    "redis_select": 0,
     "redis_timeout": 1000,
     "redis_max_idle_time": 10000,
     "redis_pool_size": 2000,

@@ -1,23 +1,16 @@
 package net.onebean.uag.conf.action.nginxInfo.cloud;
 
-import freemarker.template.Template;
-import net.onebean.common.exception.BusinessException;
-import net.onebean.common.model.BaseResponse;
+import net.onebean.core.error.BusinessException;
+import net.onebean.core.BaseResponse;
 import net.onebean.uag.conf.common.ErrorCodesEnum;
 import net.onebean.uag.conf.service.ManualUpdateServerNodeService;
 import net.onebean.util.DateUtils;
-import net.onebean.util.FreeMarkerTemplateUtils;
-import net.onebean.util.PropUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.File;
-import java.io.IOException;
 
 @RequestMapping("/cloud/nginxInfo")
 @RestController
@@ -48,16 +41,5 @@ public class NginxInfoCloudController {
         return response;
     }
 
-    @GetMapping("sdsd")
-    public void asas(){
-        try {
-            String classPathAbsolutePath = (new File("")).getCanonicalPath();
-            System.out.println("classPathAbsolutePath = "+classPathAbsolutePath);
-            Template template = FreeMarkerTemplateUtils.getTemplate("/upstream/upstream.ftl");
-            System.out.println(template);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 }

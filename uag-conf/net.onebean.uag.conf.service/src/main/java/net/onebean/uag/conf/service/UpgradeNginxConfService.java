@@ -17,13 +17,13 @@ public interface UpgradeNginxConfService {
      * 备份，不包括log目录
      * @param shellsCommand shell命令行
      */
-    String backupRemoteNginxConf(ShellsCommand shellsCommand, String unifiedRemoteBackupPath);
+    String backupRemoteNginxConf(ShellsCommand shellsCommand, String unifiedRemoteBackupPath, String remoteBasePath);
     /**
      * 删除远程nginx服务器上的配置
      * @param shellsCommand shell命令行
      * @param removeEntities 需要删除的条目，相对路径，例如 /conf.d/tenant/xxxx/tenant.conf
      */
-    void deleteRemoteNginxConf(ShellsCommand shellsCommand, List<String> removeEntities);
+    void deleteRemoteNginxConf(ShellsCommand shellsCommand, List<String> removeEntities, String remoteBasePath);
     /**
      * 普通情况下的reload
      * @param shellsCommand shell命令行
