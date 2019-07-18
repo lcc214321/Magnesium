@@ -24,7 +24,7 @@ public class SendUagLoginSmsSender {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public Boolean send(String telPhone,String smsCode){
+    public Boolean send(String telPhone,String smsCode,String appId){
         SendSmsMsgReq req = new SendSmsMsgReq();
         if (StringUtils.isEmpty(telPhone) || !StringUtils.isMobile(telPhone)){
             throw new BusinessException(ErrorCodesEnum.REQUEST_PARAM_ERROR.code(),ErrorCodesEnum.REQUEST_PARAM_ERROR.msg()+" filed of telPhone is unLegal phone number");
@@ -32,7 +32,11 @@ public class SendUagLoginSmsSender {
         if (StringUtils.isEmpty(smsCode)){
             throw new BusinessException(ErrorCodesEnum.REQUEST_PARAM_ERROR.code(),ErrorCodesEnum.REQUEST_PARAM_ERROR.msg()+" filed of smsCode is empty");
         }
+        if (StringUtils.isEmpty(appId)){
+            throw new BusinessException(ErrorCodesEnum.REQUEST_PARAM_ERROR.code(),ErrorCodesEnum.REQUEST_PARAM_ERROR.msg()+" filed of appId is empty");
+        }
         req.setTelPhone(telPhone);
+        req.setAppId(appId);
         req.setMessageBody(MessageFormat.format(SMS_CONTENT,smsCode));
         this.rabbitTemplate.convertAndSend(MqQueueNameEnum.MESSAGE_CENTER_SEND_SMS_MESSAGE.getName(), JSON.toJSONString(req));
         LOGGER.info("send message = "+req);

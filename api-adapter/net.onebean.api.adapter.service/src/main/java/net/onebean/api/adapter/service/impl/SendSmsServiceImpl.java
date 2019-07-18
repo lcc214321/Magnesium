@@ -11,6 +11,7 @@ import net.onebean.uag.conf.api.model.SendLoginSmsReq;
 import net.onebean.uag.conf.api.service.RsSalesSendSmsCloudApi;
 import net.onebean.util.PropUtil;
 import net.onebean.util.StringUtils;
+import net.onebean.util.UagUtils;
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,8 +73,9 @@ public class SendSmsServiceImpl implements SendSmsService {
         if (StringUtils.isEmpty(smsCode)){
             throw new BusinessException(ErrorCodesEnum.REQUEST_PARAM_ERROR.code(),ErrorCodesEnum.REQUEST_PARAM_ERROR.msg()+" filed of telPhone is smsCode");
         }
+
         /*异步发送短信验证码*/
-        sendUagLoginSmsSender.send(telPhone,smsCode);
+        sendUagLoginSmsSender.send(telPhone,smsCode,UagUtils.getCurrentAppId());
 
         return true;
     }

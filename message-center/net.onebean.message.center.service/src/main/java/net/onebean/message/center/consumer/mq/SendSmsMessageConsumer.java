@@ -42,7 +42,7 @@ public class SendSmsMessageConsumer {
                 throw new BusinessException(ErrorCodesEnum.JSON_CAST_ERROR.code(),ErrorCodesEnum.JSON_CAST_ERROR.msg());
             }
 
-            String sendChannel = null;
+            String sendChannel;
             try {
                 sendChannel = PropUtil.getInstance().getConfig("msg.send.channel",PropUtil.DEFLAULT_NAME_SPACE);
             } catch (Exception e) {

@@ -15,4 +15,5 @@ public interface SmsMessageSenderService {
      * @return bool
      */
     Boolean sendSmsMsgByChannel2(SendSmsMsgReq req);
+
 }

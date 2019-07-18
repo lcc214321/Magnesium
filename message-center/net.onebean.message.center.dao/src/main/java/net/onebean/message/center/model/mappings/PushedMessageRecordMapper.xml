@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author 0neBean-->
+<!--description 推送记录 mapper-->
+<!--date 2019-07-18 16:39:04-->
+<mapper namespace="net.onebean.message.center.dao.PushedMessageRecordDao">
+
+    <sql id="basicFiled">
+                t.id,
+                t.message_type, 
+                t.message_body, 
+                t.receiver_account, 
+                t.receiver_id, 
+                t.create_time, 
+                t.update_time, 
+                t.operator_id, 
+                t.operator_name, 
+                t.is_deleted
+        </sql>
+
+    <insert id="createRecordTable">
+        <![CDATA[
+		  ${sql}
+		]]>
+    </insert>
+
+    <select id="checkRecordExists" resultType="java.lang.String">
+        SHOW TABLES LIKE 't_pushed_message_record_${appId}';
+    </select>
+
+    <resultMap id="basicResultMap" type="net.onebean.message.center.model.PushedMessageRecord">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="message_type" jdbcType="CHAR" property="messageType"/>
+        <result column="message_body" jdbcType="VARCHAR" property="messageBody"/>
+        <result column="receiver_account" jdbcType="INTEGER" property="receiverAccount"/>
+        <result column="receiver_id" jdbcType="VARCHAR" property="receiverId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="operator_id" jdbcType="INTEGER" property="operatorId"/>
+        <result column="operator_name" jdbcType="VARCHAR" property="operatorName"/>
+        <result column="is_deleted" jdbcType="CHAR" property="isDeleted"/>
+    </resultMap>
+
+
+</mapper>
