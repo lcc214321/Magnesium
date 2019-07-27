@@ -1,8 +1,8 @@
 package net.onebean.app.mngt.dao;
 
 
-import net.onebean.core.BaseDao;
 import net.onebean.app.mngt.model.IpWhiteList;
+import net.onebean.core.base.BaseDao;
 
 /**
 * @author 0neBeen

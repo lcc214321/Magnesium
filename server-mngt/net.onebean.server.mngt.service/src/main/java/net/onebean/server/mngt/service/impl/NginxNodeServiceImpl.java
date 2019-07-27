@@ -2,11 +2,11 @@ package net.onebean.server.mngt.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import net.onebean.core.BaseBiz;
-import net.onebean.core.Condition;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.BaseBiz;
 import net.onebean.core.error.BusinessException;
 import net.onebean.core.extend.Sort;
+import net.onebean.core.query.Condition;
+import net.onebean.core.query.Pagination;
 import net.onebean.server.mngt.api.model.NginxNodeSyncVo;
 import net.onebean.server.mngt.common.ErrorCodesEnum;
 import net.onebean.server.mngt.dao.NginxNodeDao;

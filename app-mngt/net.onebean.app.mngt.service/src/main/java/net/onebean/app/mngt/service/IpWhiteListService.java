@@ -5,8 +5,8 @@ import net.onebean.app.mngt.model.IpWhiteList;
 import net.onebean.app.mngt.vo.IpWhiteListAddReq;
 import net.onebean.app.mngt.vo.IpWhiteListQueryReq;
 import net.onebean.app.mngt.api.model.IpWhiteListVo;
-import net.onebean.core.IBaseBiz;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.IBaseBiz;
+import net.onebean.core.query.Pagination;
 import net.onebean.core.extend.Sort;
 
 import java.util.List;

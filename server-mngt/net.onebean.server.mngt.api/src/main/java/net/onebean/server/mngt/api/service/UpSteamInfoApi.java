@@ -1,6 +1,6 @@
 package net.onebean.server.mngt.api.service;
 
-import net.onebean.core.BasePaginationResponse;
+import net.onebean.core.base.BasePaginationResponse;
 import net.onebean.server.mngt.api.fallback.UpSteamInfoApiFallBack;
 import net.onebean.server.mngt.api.model.UpSteamSyncNodeVo;
 import org.springframework.cloud.netflix.feign.FeignClient;

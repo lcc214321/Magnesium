@@ -1,6 +1,6 @@
 package net.onebean.uag.conf.api.fallback;
 
-import net.onebean.core.BaseResponse;
+import net.onebean.core.base.BaseResponse;
 import net.onebean.uag.conf.api.service.NginxInfoCloudApi;
 
 public class NginxInfoCloudApiFallBack implements NginxInfoCloudApi {

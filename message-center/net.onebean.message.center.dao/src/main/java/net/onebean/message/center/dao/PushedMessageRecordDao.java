@@ -1,7 +1,7 @@
 package net.onebean.message.center.dao;
 
 
-import net.onebean.core.BaseSplitDao;
+import net.onebean.core.base.BaseSplitDao;
 import net.onebean.message.center.model.PushedMessageRecord;
 import org.apache.ibatis.annotations.Param;
 

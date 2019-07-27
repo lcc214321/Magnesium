@@ -3,8 +3,8 @@ package net.onebean.app.mngt.service;
 
 import net.onebean.app.mngt.model.UnLoginAccessApiWhiteList;
 import net.onebean.app.mngt.vo.UnLoginAccessApiWhiteListVo;
-import net.onebean.core.IBaseBiz;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.IBaseBiz;
+import net.onebean.core.query.Pagination;
 import net.onebean.core.extend.Sort;
 
 import java.util.List;

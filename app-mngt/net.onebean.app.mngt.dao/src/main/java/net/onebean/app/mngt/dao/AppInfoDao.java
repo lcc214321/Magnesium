@@ -4,7 +4,7 @@ import net.onebean.app.mngt.api.model.AppInfoSyncCloudResp;
 import net.onebean.app.mngt.api.model.FindBasicMenuListResp;
 import net.onebean.app.mngt.api.model.FindUagUserAppListResp;
 import net.onebean.app.mngt.model.AppInfo;
-import net.onebean.core.BaseDao;
+import net.onebean.core.base.BaseDao;
 
 import java.util.List;
 

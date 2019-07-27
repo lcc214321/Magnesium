@@ -1,6 +1,6 @@
 package net.onebean.user.mngt.api.service;
 
-import net.onebean.core.BaseResponse;
+import net.onebean.core.base.BaseResponse;
 import net.onebean.user.mngt.api.fallback.UserAuthApiFallBack;
 import net.onebean.user.mngt.api.model.CheckUagLoginStatusReq;
 import net.onebean.user.mngt.api.model.UagLoginInfo;

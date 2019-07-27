@@ -1,9 +1,9 @@
 package net.onebean.tenant.mngt.service;
 
 
-import net.onebean.core.IBaseBiz;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.IBaseBiz;
 import net.onebean.core.extend.Sort;
+import net.onebean.core.query.Pagination;
 import net.onebean.tenant.mngt.api.model.FIndListTenantCityResp;
 import net.onebean.tenant.mngt.api.model.FIndTenantCityByNameReq;
 import net.onebean.tenant.mngt.model.TtenantCity;

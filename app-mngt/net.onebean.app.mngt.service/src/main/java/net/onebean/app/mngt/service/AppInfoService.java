@@ -3,11 +3,10 @@ package net.onebean.app.mngt.service;
 import net.onebean.app.mngt.api.model.*;
 import net.onebean.app.mngt.model.AppInfo;
 import net.onebean.app.mngt.vo.AppInfoQueryRequest;
-import net.onebean.app.mngt.vo.AppInfoSyncResp;
 import net.onebean.app.mngt.vo.AppInfoVo;
-import net.onebean.core.IBaseBiz;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.IBaseBiz;
 import net.onebean.core.extend.Sort;
+import net.onebean.core.query.Pagination;
 
 import java.util.List;
 

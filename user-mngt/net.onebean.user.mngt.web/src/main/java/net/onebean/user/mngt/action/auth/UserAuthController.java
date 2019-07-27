@@ -1,10 +1,10 @@
 package net.onebean.user.mngt.action.auth;
 
+import net.onebean.core.base.BaseResponse;
 import net.onebean.core.error.BusinessException;
-import net.onebean.core.BaseResponse;
+import net.onebean.user.mngt.api.model.UagLoginInfo;
 import net.onebean.user.mngt.common.ErrorCodesEnum;
 import net.onebean.user.mngt.service.UagUserInfoService;
-import net.onebean.user.mngt.api.model.UagLoginInfo;
 import net.onebean.user.mngt.vo.PasswordLoginReq;
 import net.onebean.user.mngt.vo.SmsCodeLoginRegisterReq;
 import net.onebean.util.DateUtils;

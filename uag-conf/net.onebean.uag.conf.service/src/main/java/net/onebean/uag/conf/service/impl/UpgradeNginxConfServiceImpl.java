@@ -2,7 +2,7 @@ package net.onebean.uag.conf.service.impl;
 
 import net.onebean.component.jsch.remote.JschsFactory;
 import net.onebean.component.jsch.remote.ShellsCommand;
-import net.onebean.core.BasePaginationResponse;
+import net.onebean.core.base.BasePaginationResponse;
 import net.onebean.core.error.BusinessException;
 import net.onebean.core.form.Parse;
 import net.onebean.server.mngt.api.model.AccessAuthTypeEnum;

@@ -7,7 +7,7 @@ import net.onebean.app.mngt.dao.AppApiDao;
 import net.onebean.app.mngt.model.AppApi;
 import net.onebean.app.mngt.service.AppApiService;
 import net.onebean.app.mngt.vo.AppBindingApiReq;
-import net.onebean.core.BaseBiz;
+import net.onebean.core.base.BaseBiz;
 import net.onebean.core.error.BusinessException;
 import net.onebean.core.form.Parse;
 import net.onebean.util.CollectionUtil;

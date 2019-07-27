@@ -2,8 +2,8 @@ package net.onebean.mngt.portal.action.framework;
 
 import net.onebean.app.mngt.api.model.FindBasicMenuListResp;
 import net.onebean.app.mngt.api.service.AppInfoApi;
-import net.onebean.core.BasePaginationResponse;
-import net.onebean.core.BaseResponse;
+import net.onebean.core.base.BasePaginationResponse;
+import net.onebean.core.base.BaseResponse;
 import net.onebean.core.error.BusinessException;
 import net.onebean.core.model.UagLoginSessionInfo;
 import net.onebean.mngt.portal.common.ErrorCodesEnum;

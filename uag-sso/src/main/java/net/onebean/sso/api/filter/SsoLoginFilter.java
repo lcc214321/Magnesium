@@ -2,7 +2,7 @@ package net.onebean.sso.api.filter;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import net.onebean.core.BaseResponse;
+import net.onebean.core.base.BaseResponse;
 import net.onebean.core.model.UagLoginSessionInfo;
 import net.onebean.sso.api.common.ConstantEnum;
 import net.onebean.sso.api.vo.GetAccTokenRequest;

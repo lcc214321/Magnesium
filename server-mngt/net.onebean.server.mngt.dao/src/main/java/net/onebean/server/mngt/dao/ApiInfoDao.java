@@ -1,7 +1,7 @@
 package net.onebean.server.mngt.dao;
 
 
-import net.onebean.core.BaseDao;
+import net.onebean.core.base.BaseDao;
 import net.onebean.server.mngt.api.model.ApiInfoCloudVo;
 import net.onebean.server.mngt.api.model.AppApiRelationshipAppVo;
 import net.onebean.server.mngt.api.model.UriApiRelationshipVo;

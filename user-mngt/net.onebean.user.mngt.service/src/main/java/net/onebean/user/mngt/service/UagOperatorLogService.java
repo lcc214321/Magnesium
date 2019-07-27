@@ -1,9 +1,9 @@
 package net.onebean.user.mngt.service;
 
 
-import net.onebean.core.IBaseBiz;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.IBaseBiz;
 import net.onebean.core.extend.Sort;
+import net.onebean.core.query.Pagination;
 import net.onebean.user.mngt.model.UagOperatorLog;
 import net.onebean.user.mngt.vo.FindUagLogReq;
 import net.onebean.user.mngt.vo.UagLogVo;

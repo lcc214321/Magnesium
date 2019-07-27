@@ -2,8 +2,8 @@ package net.onebean.app.mngt.api.fallback;
 
 import net.onebean.app.mngt.api.model.*;
 import net.onebean.app.mngt.api.service.AppInfoApi;
-import net.onebean.core.BasePaginationResponse;
-import net.onebean.core.BaseResponse;
+import net.onebean.core.base.BasePaginationResponse;
+import net.onebean.core.base.BaseResponse;
 import org.springframework.stereotype.Component;
 
 @Component

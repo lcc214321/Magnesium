@@ -4,7 +4,7 @@ package net.onebean.app.mngt.dao;
 import net.onebean.app.mngt.api.model.RsSalesUnLoginAccessWhiteSyncListVo;
 import net.onebean.app.mngt.model.UnLoginAccessApiWhiteList;
 import net.onebean.app.mngt.vo.UnLoginAccessApiWhiteListVo;
-import net.onebean.core.BaseDao;
+import net.onebean.core.base.BaseDao;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

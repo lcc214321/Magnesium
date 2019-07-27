@@ -8,13 +8,13 @@ import net.onebean.app.mngt.provider.mq.DevopsUpdateServerApiSender;
 import net.onebean.app.mngt.service.AppApiService;
 import net.onebean.app.mngt.service.AppInfoService;
 import net.onebean.app.mngt.vo.*;
-import net.onebean.core.BasePaginationRequest;
-import net.onebean.core.BasePaginationResponse;
-import net.onebean.core.BaseResponse;
 import net.onebean.core.Json.EnableEnumDeserialize;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.BasePaginationRequest;
+import net.onebean.core.base.BasePaginationResponse;
+import net.onebean.core.base.BaseResponse;
 import net.onebean.core.error.BusinessException;
 import net.onebean.core.extend.Sort;
+import net.onebean.core.query.Pagination;
 import net.onebean.server.mngt.api.model.*;
 import net.onebean.server.mngt.api.service.ApiInfoApi;
 import net.onebean.server.mngt.api.service.ServerInfoApi;
@@ -58,7 +58,7 @@ public class AppInfoController {
 
     @UagOperationLog(description = "新增应用信息")
     @PostMapping(value = "/add",produces = {"application/json"},consumes = {"application/json"})
-    public BaseResponse add(@RequestBody @Validated AppInfoAddRequest request, BindingResult result) {
+    public BaseResponse<Long> add(@RequestBody @Validated AppInfoAddRequest request, BindingResult result) {
         logger.info("AppInfoController add method access"+ DateUtils.getNowyyyy_MM_dd_HH_mm_ss());
         BaseResponse response = new BaseResponse();
         try {

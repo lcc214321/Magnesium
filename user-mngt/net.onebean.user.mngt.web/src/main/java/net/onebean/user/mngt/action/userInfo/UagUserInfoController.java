@@ -2,10 +2,10 @@ package net.onebean.user.mngt.action.userInfo;
 
 import net.onebean.app.mngt.api.service.AppInfoApi;
 import net.onebean.core.error.BusinessException;
-import net.onebean.core.BaseResponse;
-import net.onebean.core.BasePaginationRequest;
-import net.onebean.core.BasePaginationResponse;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.BaseResponse;
+import net.onebean.core.base.BasePaginationRequest;
+import net.onebean.core.base.BasePaginationResponse;
+import net.onebean.core.query.Pagination;
 import net.onebean.core.extend.Sort;
 import net.onebean.uag.log.annotation.UagOperationLog;
 import net.onebean.user.mngt.common.ErrorCodesEnum;

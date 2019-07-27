@@ -1,6 +1,6 @@
 package net.onebean.server.mngt.api.fallback;
 
-import net.onebean.core.BasePaginationResponse;
+import net.onebean.core.base.BasePaginationResponse;
 import net.onebean.server.mngt.api.model.UpSteamSyncNodeVo;
 import net.onebean.server.mngt.api.service.UpSteamInfoApi;
 

@@ -1,6 +1,6 @@
 package net.onebean.server.mngt.api.fallback;
 
-import net.onebean.core.BasePaginationResponse;
+import net.onebean.core.base.BasePaginationResponse;
 import net.onebean.server.mngt.api.model.FindServerByNameReq;
 import net.onebean.server.mngt.api.model.ServerBasicInfo;
 import net.onebean.server.mngt.api.service.ServerInfoApi;

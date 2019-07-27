@@ -2,7 +2,7 @@ package net.onebean.app.mngt.api.service;
 
 import net.onebean.app.mngt.api.fallback.IpWhiteApiFallBack;
 import net.onebean.app.mngt.api.model.IpWhiteListVo;
-import net.onebean.core.BasePaginationResponse;
+import net.onebean.core.base.BasePaginationResponse;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 

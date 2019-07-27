@@ -3,7 +3,7 @@ package net.onebean.app.mngt.service;
 
 import net.onebean.app.mngt.model.AppApi;
 import net.onebean.app.mngt.vo.AppBindingApiReq;
-import net.onebean.core.IBaseBiz;
+import net.onebean.core.base.IBaseBiz;
 
 
 /**

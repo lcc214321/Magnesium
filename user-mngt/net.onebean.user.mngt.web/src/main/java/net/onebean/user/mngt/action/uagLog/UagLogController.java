@@ -1,11 +1,11 @@
 package net.onebean.user.mngt.action.uagLog;
 
 
-import net.onebean.core.BasePaginationRequest;
-import net.onebean.core.BasePaginationResponse;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.BasePaginationRequest;
+import net.onebean.core.base.BasePaginationResponse;
 import net.onebean.core.error.BusinessException;
 import net.onebean.core.extend.Sort;
+import net.onebean.core.query.Pagination;
 import net.onebean.user.mngt.common.ErrorCodesEnum;
 import net.onebean.user.mngt.service.UagOperatorLogService;
 import net.onebean.user.mngt.vo.FindUagLogReq;

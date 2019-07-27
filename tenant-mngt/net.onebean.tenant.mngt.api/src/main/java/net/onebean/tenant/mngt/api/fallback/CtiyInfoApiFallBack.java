@@ -1,7 +1,7 @@
 package net.onebean.tenant.mngt.api.fallback;
 
 
-import net.onebean.core.BaseResponse;
+import net.onebean.core.base.BaseResponse;
 import net.onebean.tenant.mngt.api.model.FIndListTenantCityResp;
 import net.onebean.tenant.mngt.api.model.FIndTenantCityByNameReq;
 import net.onebean.tenant.mngt.api.service.CtiyInfoApi;

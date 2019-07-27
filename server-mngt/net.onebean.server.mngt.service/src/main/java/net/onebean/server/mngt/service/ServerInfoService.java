@@ -1,8 +1,8 @@
 package net.onebean.server.mngt.service;
 
 
-import net.onebean.core.IBaseBiz;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.IBaseBiz;
+import net.onebean.core.query.Pagination;
 import net.onebean.core.extend.Sort;
 import net.onebean.server.mngt.api.model.FindServerByNameReq;
 import net.onebean.server.mngt.model.ServerInfo;

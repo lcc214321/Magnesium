@@ -13,7 +13,7 @@ import net.onebean.app.mngt.api.model.constant.AppInfoAppCategoryEnum;
 import net.onebean.app.mngt.api.model.constant.AuthTypeEnum;
 import net.onebean.app.mngt.api.service.AppInfoApi;
 import net.onebean.component.AccessTokenEncoder;
-import net.onebean.core.BaseResponse;
+import net.onebean.core.base.BaseResponse;
 import net.onebean.core.error.BusinessException;
 import net.onebean.util.ApolloPropUtils;
 import net.onebean.util.StringUtils;

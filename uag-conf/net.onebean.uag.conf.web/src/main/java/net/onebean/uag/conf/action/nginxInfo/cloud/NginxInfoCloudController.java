@@ -1,7 +1,7 @@
 package net.onebean.uag.conf.action.nginxInfo.cloud;
 
+import net.onebean.core.base.BaseResponse;
 import net.onebean.core.error.BusinessException;
-import net.onebean.core.BaseResponse;
 import net.onebean.uag.conf.common.ErrorCodesEnum;
 import net.onebean.uag.conf.service.ManualUpdateServerNodeService;
 import net.onebean.util.DateUtils;

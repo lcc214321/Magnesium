@@ -1,7 +1,7 @@
 package net.onebean.server.mngt.action.nginxNodeInfo.cloud;
 
 import net.onebean.core.error.BusinessException;
-import net.onebean.core.BasePaginationResponse;
+import net.onebean.core.base.BasePaginationResponse;
 import net.onebean.server.mngt.api.model.NginxNodeSyncVo;
 import net.onebean.server.mngt.common.ErrorCodesEnum;
 import net.onebean.server.mngt.service.NginxNodeService;

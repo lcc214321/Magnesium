@@ -1,7 +1,7 @@
 package net.onebean.user.mngt.dao;
 
 
-import net.onebean.core.BaseSplitDao;
+import net.onebean.core.base.BaseSplitDao;
 import net.onebean.user.mngt.model.UagUserInfo;
 import org.apache.ibatis.annotations.Param;
 

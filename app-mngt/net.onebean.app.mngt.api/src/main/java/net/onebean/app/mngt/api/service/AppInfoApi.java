@@ -2,8 +2,8 @@ package net.onebean.app.mngt.api.service;
 
 import net.onebean.app.mngt.api.fallback.AppInfoApiFallBack;
 import net.onebean.app.mngt.api.model.*;
-import net.onebean.core.BaseResponse;
-import net.onebean.core.BasePaginationResponse;
+import net.onebean.core.base.BasePaginationResponse;
+import net.onebean.core.base.BaseResponse;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

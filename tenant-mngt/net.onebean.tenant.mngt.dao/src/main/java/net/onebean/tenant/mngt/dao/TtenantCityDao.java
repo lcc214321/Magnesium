@@ -1,7 +1,7 @@
 package net.onebean.tenant.mngt.dao;
 
 
-import net.onebean.core.BaseDao;
+import net.onebean.core.base.BaseDao;
 import net.onebean.tenant.mngt.model.TtenantCity;
 
 /**

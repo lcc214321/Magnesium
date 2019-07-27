@@ -1,9 +1,9 @@
 package net.onebean.user.mngt.service;
 
 
-import net.onebean.core.IBaseSplitBizManual;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.IBaseSplitBizManual;
 import net.onebean.core.extend.Sort;
+import net.onebean.core.query.Pagination;
 import net.onebean.user.mngt.api.model.CheckUagLoginStatusReq;
 import net.onebean.user.mngt.api.model.UagLoginInfo;
 import net.onebean.user.mngt.model.UagUserInfo;

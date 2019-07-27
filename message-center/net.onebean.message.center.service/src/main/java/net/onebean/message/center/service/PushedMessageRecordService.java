@@ -1,7 +1,7 @@
 package net.onebean.message.center.service;
 
 
-import net.onebean.core.IBaseSplitBizManual;
+import net.onebean.core.base.IBaseSplitBizManual;
 import net.onebean.message.center.api.model.SendSmsMsgReq;
 import net.onebean.message.center.model.PushedMessageRecord;
 

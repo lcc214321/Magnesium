@@ -3,10 +3,10 @@ package net.onebean.tenant.mngt.action.city;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import net.onebean.core.error.BusinessException;
-import net.onebean.core.BaseResponse;
-import net.onebean.core.BasePaginationRequest;
-import net.onebean.core.BasePaginationResponse;
-import net.onebean.core.Pagination;
+import net.onebean.core.base.BasePaginationResponse;
+import net.onebean.core.base.BasePaginationRequest;
+import net.onebean.core.base.BasePaginationResponse;
+import net.onebean.core.query.Pagination;
 import net.onebean.core.extend.Sort;
 import net.onebean.tenant.mngt.common.ErrorCodesEnum;
 import net.onebean.tenant.mngt.model.TtenantCity;
@@ -40,9 +40,9 @@ public class CityController {
 
     @UagOperationLog(description = "添加城市信息")
     @PostMapping(value = "/add",produces = {"application/json"},consumes = {"application/json"})
-    public BaseResponse add(@RequestBody @Validated AddTtenantCityReq req, BindingResult result){
+    public BasePaginationResponse add(@RequestBody @Validated AddTtenantCityReq req, BindingResult result){
         logger.info("CityController add method access "+ DateUtils.getNowyyyy_MM_dd_HH_mm_ss());
-        BaseResponse response = new BaseResponse();
+        BasePaginationResponse response = new BasePaginationResponse();
         try {
             if (result.hasErrors()) {
                 response.setErrCode(ErrorCodesEnum.REQUEST_PARAM_ERROR.code());
@@ -56,7 +56,7 @@ public class CityController {
             logger.debug("CityController add method target = "+ JSON.toJSONString(target, SerializerFeature.WriteMapNullValue));
             UagSsoUtils.setUagUserInfoByHeader(target);
             ttenantCityService.save(target);
-            response = BaseResponse.ok(target.getId());
+            response = BasePaginationResponse.ok(target.getId());
         } catch (BusinessException e) {
             response.setErrCode(e.getCode());
             response.setErrMsg(e.getMsg());
@@ -119,9 +119,9 @@ public class CityController {
 
     @UagOperationLog(description = "删除城市信息")
     @PostMapping(value = "/delete",produces = {"application/json"},consumes = {"application/json"})
-    public BaseResponse delete(@RequestBody @Validated ModifyTtenantCityReq req, BindingResult result){
+    public BasePaginationResponse delete(@RequestBody @Validated ModifyTtenantCityReq req, BindingResult result){
         logger.info("CityController delete method access "+ DateUtils.getNowyyyy_MM_dd_HH_mm_ss());
-        BaseResponse response = new BaseResponse();
+        BasePaginationResponse response = new BasePaginationResponse();
         try {
             if (result.hasErrors()) {
                 response.setErrCode(ErrorCodesEnum.REQUEST_PARAM_ERROR.code());
@@ -130,7 +130,7 @@ public class CityController {
             }
             logger.debug("CityController delete method req = "+ JSON.toJSONString(req, SerializerFeature.WriteMapNullValue));
             String id = Optional.ofNullable(req).map(ModifyTtenantCityReq::getId).orElse(null);
-            response = BaseResponse.ok(ttenantCityService.deleteById(id));
+            response = BasePaginationResponse.ok(ttenantCityService.deleteById(id));
         } catch (BusinessException e) {
             response.setErrCode(e.getCode());
             response.setErrMsg(e.getMsg());
@@ -144,9 +144,9 @@ public class CityController {
     }
 
     @PostMapping(value = "/findById",produces = {"application/json"},consumes = {"application/json"})
-    public BaseResponse findById(@RequestBody @Validated ModifyTtenantCityReq req, BindingResult result){
+    public BasePaginationResponse findById(@RequestBody @Validated ModifyTtenantCityReq req, BindingResult result){
         logger.info("CityController findById method access "+ DateUtils.getNowyyyy_MM_dd_HH_mm_ss());
-        BaseResponse response = new BaseResponse();
+        BasePaginationResponse response = new BasePaginationResponse();
         try {
             if (result.hasErrors()) {
                 response.setErrCode(ErrorCodesEnum.REQUEST_PARAM_ERROR.code());
@@ -155,7 +155,7 @@ public class CityController {
             }
             logger.debug("CityController findById method req = "+ JSON.toJSONString(req, SerializerFeature.WriteMapNullValue));
             String id = Optional.ofNullable(req).map(ModifyTtenantCityReq::getId).orElse(null);
-            response = BaseResponse.ok(ttenantCityService.findVoById(id));
+            response = BasePaginationResponse.ok(ttenantCityService.findVoById(id));
         } catch (BusinessException e) {
             response.setErrCode(e.getCode());
             response.setErrMsg(e.getMsg());

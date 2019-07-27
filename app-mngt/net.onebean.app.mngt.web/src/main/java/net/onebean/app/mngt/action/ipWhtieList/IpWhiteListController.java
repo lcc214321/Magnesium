@@ -2,18 +2,18 @@ package net.onebean.app.mngt.action.ipWhtieList;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import net.onebean.app.mngt.api.model.IpWhiteListVo;
 import net.onebean.app.mngt.common.ErrorCodesEnum;
 import net.onebean.app.mngt.service.IpWhiteListService;
 import net.onebean.app.mngt.vo.IpWhiteListAddReq;
 import net.onebean.app.mngt.vo.IpWhiteListModifyRequest;
 import net.onebean.app.mngt.vo.IpWhiteListQueryReq;
-import net.onebean.app.mngt.api.model.IpWhiteListVo;
+import net.onebean.core.base.BasePaginationRequest;
+import net.onebean.core.base.BasePaginationResponse;
+import net.onebean.core.base.BaseResponse;
 import net.onebean.core.error.BusinessException;
-import net.onebean.core.BaseResponse;
-import net.onebean.core.BasePaginationRequest;
-import net.onebean.core.BasePaginationResponse;
-import net.onebean.core.Pagination;
 import net.onebean.core.extend.Sort;
+import net.onebean.core.query.Pagination;
 import net.onebean.uag.log.annotation.UagOperationLog;
 import net.onebean.util.DateUtils;
 import org.slf4j.Logger;
@@ -44,7 +44,7 @@ public class IpWhiteListController {
 
     @UagOperationLog(description = "添加IP白名单")
     @PostMapping(value = "/add",produces = {"application/json"},consumes = {"application/json"})
-    public BaseResponse add(@RequestBody @Validated IpWhiteListAddReq request, BindingResult result) {
+    public BaseResponse<Long> add(@RequestBody @Validated IpWhiteListAddReq request, BindingResult result) {
         logger.info("IpWhiteListController add method access"+ DateUtils.getNowyyyy_MM_dd_HH_mm_ss());
         BaseResponse response = new BaseResponse();
         try {
@@ -70,7 +70,7 @@ public class IpWhiteListController {
 
     @UagOperationLog(description = "删除IP白名单")
     @PostMapping(value = "/delete",produces = {"application/json"},consumes = {"application/json"})
-    public BaseResponse delete(@RequestBody @Validated IpWhiteListModifyRequest request, BindingResult result) {
+    public BaseResponse<Integer> delete(@RequestBody @Validated IpWhiteListModifyRequest request, BindingResult result) {
         logger.info("IpWhiteListController delete method access"+ DateUtils.getNowyyyy_MM_dd_HH_mm_ss());
         BaseResponse response = new BaseResponse();
         try {
