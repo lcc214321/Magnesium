@@ -9,7 +9,7 @@ module.exports = {
     proxy: {
       '/local-api': {
         //测试只改这一个地方为API的域名地址即可
-        target: 'http://localhost:8189',
+        target: 'http://localhost:8079',
         ws: true,
         changeOrigin: true,
         pathRewrite: {

@@ -470,9 +470,11 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
         String uagUserId = Optional.of(list).map(l -> list.get(0)).map(UagUserInfo::getId).map(id -> id + "").orElse("");
         String nickName = Optional.of(list).map(l -> list.get(0)).map(UagUserInfo::getNickName).orElse("");
         String passwordRaw = Optional.of(list).map(l -> list.get(0)).map(UagUserInfo::getPassword).map(id -> id + "").orElse("");
+
         if (StringUtils.isEmpty(uagUserId)) {
             throw new BusinessException(ErrorCodesEnum.INVALID_ACCOUNT.code(), ErrorCodesEnum.INVALID_ACCOUNT.msg());
         }
+
         if (!passwordEncoder.matches(password, passwordRaw)) {
             throw new BusinessException(ErrorCodesEnum.INVALID_PASSWORD.code(), ErrorCodesEnum.INVALID_PASSWORD.msg());
         }

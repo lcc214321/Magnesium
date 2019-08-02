@@ -130,6 +130,7 @@ export default {
       columns: [
         { title: 'UAG-USER-ID', key: 'id' },
         { title: '用户名', key: 'username' },
+        { title: '姓名', key: 'nickName' },
         { title: '创建时间', key: 'createTime' },
         { title: '修改时间', key: 'updateTime' },
         { title: '操作人', key: 'operatorName' },
