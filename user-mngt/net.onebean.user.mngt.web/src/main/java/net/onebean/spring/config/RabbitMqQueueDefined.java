@@ -12,5 +12,9 @@ public class RabbitMqQueueDefined {
     public Queue uagCloudControlOperationLog() {
         return new Queue(MqQueueNameEnum.UAG_CLOUD_CONTROL_OPERATION_LOG.getName());
     }
+    @Bean
+    public Queue uagUserAccountResetPassword() {
+        return new Queue(MqQueueNameEnum.UAG_USER_ACCOUNT_RESET_PASSWORD.getName());
+    }
 
 }

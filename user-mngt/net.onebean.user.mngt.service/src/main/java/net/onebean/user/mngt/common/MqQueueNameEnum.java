@@ -4,6 +4,7 @@ public enum MqQueueNameEnum {
 
 
     UAG_CLOUD_CONTROL_OPERATION_LOG("uag.cloud.control.operation.log"),
+    UAG_USER_ACCOUNT_RESET_PASSWORD("uag.user.account.reset.password"),
     ;
 
     private String name;
