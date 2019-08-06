@@ -1,11 +1,11 @@
-package net.onebean.message.center.common;
+package net.onebean.message.center.enumModel;
 
 /**
  * 消息类型
  */
 public enum MsgTypeEnum {
 
-    MSG_TYPE_MSG("1", "验证码"),
+    MSG_TYPE_SMS_CODE("1", "短信验证码"),
    ;
 
 
