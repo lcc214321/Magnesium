@@ -30,12 +30,6 @@
             <artifactId>net.onebean.app.mngt.api</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>net.onebean</groupId>-->
-            <!--<artifactId>onebean.data.redis</artifactId>-->
-            <!--<version>1.0.0-SNAPSHOT</version>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>net.onebean</groupId>
             <artifactId>net.onebean.message.center.api</artifactId>
