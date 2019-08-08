@@ -1,10 +1,10 @@
 package net.onebean.uag.conf.api.fallback;
 
-        import net.onebean.core.base.BaseResponse;
-        import net.onebean.uag.conf.api.model.SendLoginSmsReq;
-        import net.onebean.uag.conf.api.service.RsSalesSendSmsCloudApi;
+import net.onebean.core.base.BaseResponse;
+import net.onebean.uag.conf.api.model.SendLoginSmsReq;
+import net.onebean.uag.conf.api.service.SendSmsCloudApi;
 
-public class RsSalesSendSmsCloudApiFallBack implements RsSalesSendSmsCloudApi {
+public class SendSmsCloudApiFallBack implements SendSmsCloudApi {
 
     @Override
     public BaseResponse<Boolean> setLoginSmsCheckCache(SendLoginSmsReq request) {

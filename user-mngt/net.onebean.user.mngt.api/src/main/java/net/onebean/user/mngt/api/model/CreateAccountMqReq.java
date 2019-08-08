@@ -2,13 +2,17 @@ package net.onebean.user.mngt.api.model;
 
 public class CreateAccountMqReq {
 
-    private String uagUserId;
-    private String uagUsername;
+
+    public CreateAccountMqReq() {
+    }
 
     public CreateAccountMqReq(String uagUserId, String uagUsername) {
         this.uagUserId = uagUserId;
         this.uagUsername = uagUsername;
     }
+
+    private String uagUserId;
+    private String uagUsername;
 
     public String getUagUserId() {
         return uagUserId;

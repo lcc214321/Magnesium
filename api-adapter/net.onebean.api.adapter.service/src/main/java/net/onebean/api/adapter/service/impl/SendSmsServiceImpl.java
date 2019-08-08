@@ -8,7 +8,7 @@ import net.onebean.core.base.BaseResponse;
 import net.onebean.core.error.BusinessException;
 import net.onebean.core.form.Parse;
 import net.onebean.uag.conf.api.model.SendLoginSmsReq;
-import net.onebean.uag.conf.api.service.RsSalesSendSmsCloudApi;
+import net.onebean.uag.conf.api.service.SendSmsCloudApi;
 import net.onebean.util.PropUtil;
 import net.onebean.util.StringUtils;
 import net.onebean.util.UagUtils;
@@ -26,7 +26,7 @@ public class SendSmsServiceImpl implements SendSmsService {
     private final static Logger logger = LoggerFactory.getLogger(SendSmsServiceImpl.class);
 
     @Autowired
-    private RsSalesSendSmsCloudApi salesSendSmsCloudApi;
+    private SendSmsCloudApi salesSendSmsCloudApi;
     @Autowired
     private SendUagLoginSmsSender sendUagLoginSmsSender;
 

@@ -207,7 +207,7 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
     public UagLoginInfo smsCodeLoginRegister(SmsCodeLoginRegisterReq param) {
         String telPhone = Optional.ofNullable(param).map(SmsCodeLoginRegisterReq::getTelPhone).orElse("");
         String smsCode = Optional.ofNullable(param).map(SmsCodeLoginRegisterReq::getSmsCode).orElse("");
-        String deviceToken = Optional.ofNullable(param).map(SmsCodeLoginRegisterReq::getDeviceToken).orElse("");
+        String deviceToken = UagUtils.getCurrentDeviceToken();
 
         if (StringUtils.isEmpty(telPhone) || StringUtils.isEmpty(smsCode) || StringUtils.isEmpty(deviceToken)) {
             throw new BusinessException(ErrorCodesEnum.INVALID_SMS_CODE.code(), ErrorCodesEnum.INVALID_SMS_CODE.msg());
@@ -226,7 +226,7 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
     public UagLoginInfo smsCodeLogin(SmsCodeLoginRegisterReq param) {
         String telPhone = Optional.ofNullable(param).map(SmsCodeLoginRegisterReq::getTelPhone).orElse("");
         String smsCode = Optional.ofNullable(param).map(SmsCodeLoginRegisterReq::getSmsCode).orElse("");
-        String deviceToken = Optional.ofNullable(param).map(SmsCodeLoginRegisterReq::getDeviceToken).orElse("");
+        String deviceToken = UagUtils.getCurrentDeviceToken();
 
         if (StringUtils.isEmpty(telPhone) || StringUtils.isEmpty(smsCode) || StringUtils.isEmpty(deviceToken)) {
             throw new BusinessException(ErrorCodesEnum.INVALID_SMS_CODE.code(), ErrorCodesEnum.INVALID_SMS_CODE.msg());
@@ -245,7 +245,7 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
     public UagLoginInfo smsCodeRegister(SmsCodeLoginRegisterReq param) {
         String telPhone = Optional.ofNullable(param).map(SmsCodeLoginRegisterReq::getTelPhone).orElse("");
         String smsCode = Optional.ofNullable(param).map(SmsCodeLoginRegisterReq::getSmsCode).orElse("");
-        String deviceToken = Optional.ofNullable(param).map(SmsCodeLoginRegisterReq::getDeviceToken).orElse("");
+        String deviceToken = UagUtils.getCurrentDeviceToken();
 
         if (StringUtils.isEmpty(telPhone) || StringUtils.isEmpty(smsCode) || StringUtils.isEmpty(deviceToken)) {
             throw new BusinessException(ErrorCodesEnum.INVALID_SMS_CODE.code(), ErrorCodesEnum.INVALID_SMS_CODE.msg());
@@ -434,7 +434,7 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
         String appId = UagUtils.getCurrentAppId();
         String telPhone = Optional.ofNullable(req).map(PasswordLoginReq::getTelPhone).orElse("");
         String password = Optional.ofNullable(req).map(PasswordLoginReq::getPassword).orElse("");
-        String deviceToken = Optional.ofNullable(req).map(PasswordLoginReq::getDeviceToken).orElse("");
+        String deviceToken = UagUtils.getCurrentDeviceToken();
         /*执行密码登录逻辑*/
         UagLoginInfo loginRegisterResp = doPasswordLogin(appId, telPhone, password);
         /*设置登录标识*/
@@ -492,7 +492,7 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
     public UagLoginInfo passwordRegister(PasswordLoginReq param) {
         String telPhone = Optional.ofNullable(param).map(PasswordLoginReq::getTelPhone).orElse("");
         String password = Optional.ofNullable(param).map(PasswordLoginReq::getPassword).orElse("");
-        String deviceToken = Optional.ofNullable(param).map(PasswordLoginReq::getDeviceToken).orElse("");
+        String deviceToken = UagUtils.getCurrentDeviceToken();
 
         if (StringUtils.isEmpty(telPhone) || StringUtils.isEmpty(password) || StringUtils.isEmpty(deviceToken)) {
             throw new BusinessException(ErrorCodesEnum.REQUEST_PARAM_ERROR.code(), ErrorCodesEnum.REQUEST_PARAM_ERROR.msg());

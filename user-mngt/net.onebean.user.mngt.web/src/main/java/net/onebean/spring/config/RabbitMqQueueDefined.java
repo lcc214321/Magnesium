@@ -1,6 +1,7 @@
 package net.onebean.spring.config;
 
 import net.onebean.user.mngt.common.MqQueueNameEnum;
+import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,5 +17,13 @@ public class RabbitMqQueueDefined {
     public Queue uagUserAccountResetPassword() {
         return new Queue(MqQueueNameEnum.UAG_USER_ACCOUNT_RESET_PASSWORD.getName());
     }
+
+    @Bean
+    public Queue devopsInitUagAccountTable() {
+        return new Queue(MqQueueNameEnum.DEVOPS_INIT_UAG_ACCOUNT_TABLE.getName());
+    }
+
+    @Bean
+    public ExchangeBuilder
 
 }

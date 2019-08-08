@@ -8,8 +8,6 @@ public class SmsCodeLoginRegisterReq {
     private String telPhone;
     @NotBlank(message = "filed of smsCode can not be empty")
     private String smsCode;
-    @NotBlank(message = "filed of deviceToken can not be empty")
-    private String deviceToken;
 
     public String getTelPhone() {
         return telPhone;
@@ -25,13 +23,5 @@ public class SmsCodeLoginRegisterReq {
 
     public void setSmsCode(String smsCode) {
         this.smsCode = smsCode;
-    }
-
-    public String getDeviceToken() {
-        return deviceToken;
-    }
-
-    public void setDeviceToken(String deviceToken) {
-        this.deviceToken = deviceToken;
     }
 }

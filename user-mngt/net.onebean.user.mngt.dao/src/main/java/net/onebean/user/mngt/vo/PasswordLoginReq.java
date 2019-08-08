@@ -8,8 +8,6 @@ public class PasswordLoginReq {
     private String telPhone;
     @NotBlank(message = "filed of password can not be empty")
     private String password;
-    @NotBlank(message = "filed of deviceToken can not be empty")
-    private String deviceToken;
 
     public String getTelPhone() {
         return telPhone;
@@ -25,13 +23,5 @@ public class PasswordLoginReq {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getDeviceToken() {
-        return deviceToken;
-    }
-
-    public void setDeviceToken(String deviceToken) {
-        this.deviceToken = deviceToken;
     }
 }

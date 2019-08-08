@@ -65,6 +65,8 @@ end
 --[[混合令牌校验]]
 local function checkHybridTokenLoginStatus(accessTokenCasheJson,appId)
     local deviceTokenCashe = stringUtil.toStringTrim(accessTokenCasheJson["deviceToken"]);
+    ngx.ctx.deviceToken = deviceTokenCashe;
+    ngx.log(ngx.DEBUG, "checkHybridTokenLoginStatus ngx.ctx.deviceToken = ["..deviceTokenCashe.."]");
     --[[检查未登录访问地址是否是免登录的资源]]
     local pass = checkUnLoginAccessWhiteList();
     if not pass then
@@ -509,6 +511,7 @@ local function setUagReqHeader()
     local tenantId = ngx.ctx.tenantId;
     local uagAuthUserId = ngx.ctx.uagAuthUserId;
     local customerId = ngx.ctx.customerId;
+    local deviceToken = ngx.ctx.deviceToken;
 
     --[[将 uagAuthUserId 设置到请求头部]]
     if (stringUtil.isNotBlank(uagAuthUserId)) then
@@ -519,7 +522,14 @@ local function setUagReqHeader()
     --[[将 customerId 设置到请求头部]]
     if (stringUtil.isNotBlank(customerId)) then
         webUtil.setReqHeader(constants.HEADER_UAG_AUTH_USER_ID_KEY,customerId);
-        ngx.log(ngx.INFO, "openAPI setUagReqHeader header[uagAuthUserId] is [customerId = "..webUtil.getReqHeader(constants.HEADER_UAG_AUTH_USER_ID_KEY).."]");
+        ngx.log(ngx.INFO, "openAPI setUagReqHeader header[customerId] is [customerId = "..webUtil.getReqHeader(constants.HEADER_UAG_AUTH_USER_ID_KEY).."]");
+    end
+
+    ngx.log(ngx.DEBUG, "setUagReqHeader ngx.ctx.deviceToken = ["..deviceToken.."]");
+    --[[将 customerId 设置到请求头部]]
+    if (stringUtil.isNotBlank(deviceToken)) then
+        webUtil.setReqHeader(constants.HEADER_UAG_AUTH_DEVICE_TOKEN,deviceToken);
+        ngx.log(ngx.INFO, "openAPI setUagReqHeader header[deviceToken] is [deviceToken = "..webUtil.getReqHeader(constants.HEADER_UAG_AUTH_DEVICE_TOKEN).."]");
     end
 
     --[[将 appid 设置到请求头部]]

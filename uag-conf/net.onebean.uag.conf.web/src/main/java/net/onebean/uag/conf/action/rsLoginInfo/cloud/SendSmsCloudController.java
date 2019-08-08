@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("RsSalesSendSmsCloud")
-public class RsSalesSendSmsCloudController {
+@RequestMapping("sendSmsCloudController")
+public class SendSmsCloudController {
 
-    private final static Logger logger = LoggerFactory.getLogger(RsSalesSendSmsCloudController.class);
+    private final static Logger logger = LoggerFactory.getLogger(SendSmsCloudController.class);
 
     @Autowired
     private CacheRsSalesLoginInfoService cacheRsSalesLoginInfoService;
