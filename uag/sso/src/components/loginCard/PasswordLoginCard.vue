@@ -110,14 +110,13 @@ export default {
         this.uagAccessToken,
         this.API_PTAH.authPasswordLogin,
         {
-          deviceToken: this.deviceToken,
           telPhone: this.passwordLoginFrom.telPhone,
           password: this.passwordLoginFrom.password
         },
         resp => {
           if (resp.data.datas.loginStatus === '1') {
             const oauthBaseUrl = resp.data.datas.oauthBaseUrl
-            window.location.href = `${oauthBaseUrl}?uagDeviceToken=${this.deviceToken}`
+            window.location.href = `${oauthBaseUrl}?uagDeviceToken=${this.uagDeviceToken}`
           }
         },
         () => {

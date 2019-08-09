@@ -129,11 +129,10 @@ public class AccessTokenServiceImpl implements AccessTokenService {
             }
 
             accessToeknCacheKey = CacheConstants.generateKey(accessToeknCacheKey, CacheConstants.RS_SALES_PRIVATE_TOKEN_KEY);
-
-            if (StringUtils.isNotEmpty(deviceToken)) {
-                vo.setDeviceToken(deviceToken);
+            /*参数非空校验*/
+            if (StringUtils.isEmpty(deviceToken)) {
+                throw new BusinessException(ErrorCodesEnum.REQUEST_PARAM_ERROR.code(), ErrorCodesEnum.REQUEST_PARAM_ERROR.msg() + " field of deviceToken");
             }
-
             accessToeknCacheKey = CacheConstants.generateKey(accessToeknCacheKey, accessToken);
 
             vo.setAccessTokenCacheKey(accessToeknCacheKey);

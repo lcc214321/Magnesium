@@ -340,7 +340,6 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
         return resp;
     }
 
-
     /*设置登录标识*/
     private void setLoginFlag(UagLoginInfo loginRegisterResp, String telPhone, String deviceToken) {
         String appId = UagUtils.getCurrentAppId();
@@ -361,8 +360,8 @@ public class UagUserInfoServiceImpl extends BaseSplitBizManual<UagUserInfo, UagU
         accountTable.put(telPhone, deviceToken);
         deviceTokenTable.put(deviceToken, JSON.toJSONString(loginRegisterResp));
 
-        iRedisService.hSetAll(redisDeviceTokenKey, JSONUtil.toMap(JSONUtil.toJson(deviceTokenTable)));
         iRedisService.hSetAll(redisAccountKey, JSONUtil.toMap(JSONUtil.toJson(accountTable)));
+        iRedisService.hSetAll(redisDeviceTokenKey, JSONUtil.toMap(JSONUtil.toJson(deviceTokenTable)));
     }
 
     @Override

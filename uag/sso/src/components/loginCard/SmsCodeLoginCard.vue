@@ -150,14 +150,14 @@ export default {
         this.uagAccessToken,
         this.API_PTAH.authSmsCodeLogin,
         {
-          deviceToken: this.deviceToken,
           telPhone: this.smsLoginFrom.telPhone,
           smsCode: this.smsLoginFrom.smsCode
         },
         resp => {
           if (resp.data.datas.loginStatus === '1') {
-            const oauthBaseUrl = resp.data.datas.oauthBaseUrl
-            window.location.href = `${oauthBaseUrl}?uagDeviceToken=${this.deviceToken}`
+            let oauthBaseUrl = resp.data.datas.oauthBaseUrl
+            oauthBaseUrl = `${oauthBaseUrl}?uagDeviceToken=${this.uagDeviceToken}`
+            window.location.href = oauthBaseUrl
           }
         }
       )

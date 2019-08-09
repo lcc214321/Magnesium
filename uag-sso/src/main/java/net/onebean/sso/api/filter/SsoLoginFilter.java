@@ -44,8 +44,10 @@ public class SsoLoginFilter implements Filter {
     private static String SSO_UAG_APP_ID;
     private static String SSO_UAG_SECRET;
     private static String SSO_UAG_ACCESS_TOKEN_URL;
+    private static String SSO_UAG_DEVICE_TOKEN_URL;
 
     static {
+        SSO_UAG_DEVICE_TOKEN_URL = PropUtil.getInstance().getConfig("sso.uag.device.token.url", PropUtil.PUBLIC_CONF_SSO);
         SSO_BASE_OAUTH_URL = PropUtil.getInstance().getConfig("sso.base.oauth.url", PropUtil.PUBLIC_CONF_SSO);
         SSO_UAG_APP_ID = PropUtil.getInstance().getConfig("sso.uag.app.id", PropUtil.PUBLIC_CONF_SSO);
         SSO_UAG_SECRET = PropUtil.getInstance().getConfig("sso.uag.secret", PropUtil.PUBLIC_CONF_SSO);
@@ -132,19 +134,21 @@ public class SsoLoginFilter implements Filter {
     }
 
     private static String generateSsoCompleteUrl() {
-        String accessToken = getAccessToken();
-        String oauthUrl = SSO_BASE_OAUTH_URL + "#/" + "?uagAppId=" + SSO_UAG_APP_ID + "&uagAccessToken=" + accessToken;
+        String deviceToken = getDeviceToken();
+        String accessToken = getAccessToken(deviceToken);
+        String oauthUrl = SSO_BASE_OAUTH_URL + "#/" + "?uagAppId=" + SSO_UAG_APP_ID + "&uagAccessToken=" + accessToken + "&uagDeviceToken=" + deviceToken;
         LOGGER.error("oauthUrl is = " + oauthUrl);
         return oauthUrl;
     }
 
-    private static String getAccessToken() {
+    private static String getAccessToken(String deviceToken) {
         GetAccTokenRequest request = new GetAccTokenRequest();
         String timestamp = DateUtils.getTimeStamp();
         request.setAppId(SSO_UAG_APP_ID);
         request.setSecret(SSO_UAG_SECRET);
         request.setTimestamp(timestamp);
-        request.setSign(TokenCheckUtils.sign(SSO_UAG_APP_ID, SSO_UAG_SECRET, timestamp));
+        request.setDeviceToken(deviceToken);
+        request.setSign(TokenCheckUtils.sign(SSO_UAG_APP_ID, SSO_UAG_SECRET, deviceToken, timestamp));
         String respJsonStr = (String) RestUtils.getInstance().doPostForObj(SSO_UAG_ACCESS_TOKEN_URL, request, String.class);
         BaseResponse<GetAccessTokenResponse> resp = JSON.parseObject(respJsonStr, new TypeReference<BaseResponse<GetAccessTokenResponse>>() {
         });
@@ -155,5 +159,16 @@ public class SsoLoginFilter implements Filter {
         return accessToken;
     }
 
+
+    private static String getDeviceToken() {
+        String respJsonStr = (String) RestUtils.getInstance().doPostForObj(SSO_UAG_DEVICE_TOKEN_URL, null, String.class);
+        BaseResponse<String> resp = JSON.parseObject(respJsonStr, new TypeReference<BaseResponse<String>>() {
+        });
+        String deviceToken = Optional.ofNullable(resp).map(BaseResponse::getDatas).orElse("");
+        if (StringUtils.isEmpty(deviceToken)) {
+            LOGGER.error("un login request ,accessToken is empty");
+        }
+        return deviceToken;
+    }
 
 }

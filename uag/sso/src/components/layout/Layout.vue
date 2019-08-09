@@ -32,28 +32,14 @@ export default {
     return {
       bgUrl: logoImgResource,
       uagAppId: this.$route.query.uagAppId,
-      uagDeviceToken: '',
+      uagDeviceToken: this.$route.query.uagDeviceToken,
       uagAccessToken: this.$route.query.uagAccessToken
     }
   },
   mounted: function() {
     this.checkSsoParam()
-    this.initDeviceToken()
   },
   methods: {
-    initDeviceToken: function() {
-      if ('undefined' === typeof localStorage.deviceToken) {
-        this.utils.netUtil.postWithAccessToken(
-          this.uagAppId,
-          this.uagAccessToken,
-          this.API_PTAH.authInitializeDevice,
-          {},
-          resp => {
-            this.uagDeviceToken = resp.data.datas
-          }
-        )
-      }
-    },
     checkSsoParam: function() {
       if (
         typeof this.uagAppId === 'undefined' ||
