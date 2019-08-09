@@ -129,10 +129,11 @@ public class AccessTokenServiceImpl implements AccessTokenService {
             }
 
             accessToeknCacheKey = CacheConstants.generateKey(accessToeknCacheKey, CacheConstants.RS_SALES_PRIVATE_TOKEN_KEY);
-            /*参数非空校验*/
+
             if (StringUtils.isNotEmpty(deviceToken)) {
                 vo.setDeviceToken(deviceToken);
             }
+
             accessToeknCacheKey = CacheConstants.generateKey(accessToeknCacheKey, accessToken);
 
             vo.setAccessTokenCacheKey(accessToeknCacheKey);

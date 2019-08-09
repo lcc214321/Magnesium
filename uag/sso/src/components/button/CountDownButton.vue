@@ -56,10 +56,10 @@
 <script>
 export default {
   props: ['countDown', 'showText', 'reShowText'],
-  data() {
+  data() {  
     return {
       content: this.showText,
-      smsCountDown: this.countDown,
+      cg: this.countDown,
       countDownButtonDisabled: false
     }
   },
@@ -68,12 +68,13 @@ export default {
     changeCountNumber() {
       this.countDownButtonDisabled = 'disabled'
       const interval = setInterval(() => {
-        if (this.smsCountDown > -1) {
-          this.content = this.smsCountDown
-          this.smsCountDown--
+        if (this.cg > -1) {
+          this.content = this.cg
+          this.cg--
         } else {
           this.content = this.reShowText
           this.countDownButtonDisabled = false
+          this.cg = this.countDown
           clearInterval(interval)
         }
       }, 1000)

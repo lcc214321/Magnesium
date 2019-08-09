@@ -84,9 +84,9 @@ export default {
       countDown: 60,
       showText: '获取验证码',
       reShowText: '重新获取',
-      uagAppId: sessionStorage.uagAppId,
-      uagAccessToken: sessionStorage.uagAccessToken,
-      deviceToken: localStorage.deviceToken,
+      uagAppId: this.$route.query.uagAppId,
+      uagDeviceToken: this.$route.query.uagDeviceToken,
+      uagAccessToken: this.$route.query.uagAccessToken,
       smsLoginFrom: {
         telPhone: '',
         smsCode: ''
@@ -138,7 +138,8 @@ export default {
     checkSsoParam: function() {
       if (
         typeof this.uagAppId === 'undefined' ||
-        typeof this.uagAccessToken === 'undefined'
+        typeof this.uagAccessToken === 'undefined' ||
+        typeof this.uagDeviceToken === 'undefined' 
       ) {
         this.$router.push('/err')
       }

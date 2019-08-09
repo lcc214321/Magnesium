@@ -1,7 +1,9 @@
 package net.onebean.spring.config;
 
+import net.onebean.user.mngt.common.MqExchangeNameEnum;
 import net.onebean.user.mngt.common.MqQueueNameEnum;
 import org.springframework.amqp.core.ExchangeBuilder;
+import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +26,9 @@ public class RabbitMqQueueDefined {
     }
 
     @Bean
-    public ExchangeBuilder
+    FanoutExchange uagCreateAccountFanoutExchange() {
+        return new FanoutExchange(MqExchangeNameEnum.UAG_CREATE_ACCOUNT_FANOUT_EXCHANGE.getName());
+    }
+
 
 }

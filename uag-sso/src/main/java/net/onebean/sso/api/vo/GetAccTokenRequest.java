@@ -14,6 +14,15 @@ public class GetAccTokenRequest {
     /*签名*/
     private String sign;
 
+    private String deviceToken;
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
+    }
 
     public String getAppId() {
         return appId;

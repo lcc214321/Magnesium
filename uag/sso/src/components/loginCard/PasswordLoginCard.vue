@@ -61,9 +61,9 @@ export default {
   data() {
     return {
       commitButtonDisabled: false,
-      uagAppId: sessionStorage.uagAppId,
-      uagAccessToken: sessionStorage.uagAccessToken,
-      deviceToken: localStorage.deviceToken,
+      uagAppId: this.$route.query.uagAppId,
+      uagDeviceToken: this.$route.query.uagDeviceToken,
+      uagAccessToken: this.$route.query.uagAccessToken,
       passwordLoginFrom: {
         telPhone: '',
         password: ''
@@ -97,7 +97,8 @@ export default {
     checkSsoParam: function() {
       if (
         typeof this.uagAppId === 'undefined' ||
-        typeof this.uagAccessToken === 'undefined'
+        typeof this.uagAccessToken === 'undefined'||
+        typeof this.uagDeviceToken === 'undefined' 
       ) {
         this.$router.push('/err')
       }
@@ -116,9 +117,7 @@ export default {
         resp => {
           if (resp.data.datas.loginStatus === '1') {
             const oauthBaseUrl = resp.data.datas.oauthBaseUrl
-            window.location.href = `${oauthBaseUrl}?uagDeviceToken=${
-              this.deviceToken
-            }`
+            window.location.href = `${oauthBaseUrl}?uagDeviceToken=${this.deviceToken}`
           }
         },
         () => {

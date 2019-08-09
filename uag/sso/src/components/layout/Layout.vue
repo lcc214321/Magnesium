@@ -32,6 +32,7 @@ export default {
     return {
       bgUrl: logoImgResource,
       uagAppId: this.$route.query.uagAppId,
+      uagDeviceToken: '',
       uagAccessToken: this.$route.query.uagAccessToken
     }
   },
@@ -48,7 +49,7 @@ export default {
           this.API_PTAH.authInitializeDevice,
           {},
           resp => {
-            localStorage.setItem('deviceToken', resp.data.datas)
+            this.uagDeviceToken = resp.data.datas
           }
         )
       }
@@ -74,12 +75,24 @@ export default {
             this.$router.push('/err')
             return
           }
-          sessionStorage.setItem('uagAppId', this.uagAppId)
-          sessionStorage.setItem('uagAccessToken', this.uagAccessToken)
           if (resp.data.datas == '1') {
-            this.$router.push('/sms')
+            this.$router.push({
+              path: '/sms',
+              query: {
+                uagAppId: this.uagAppId,
+                uagAccessToken: this.uagAccessToken,
+                uagDeviceToken: this.uagDeviceToken
+              }
+            })
           } else {
-            this.$router.push('/password')
+            this.$router.push({
+              path: '/password',
+              query: {
+                uagAppId: this.uagAppId,
+                uagAccessToken: this.uagAccessToken,
+                uagDeviceToken: this.uagDeviceToken
+              }
+            })
           }
         }
       )

@@ -43,6 +43,10 @@ public class SendSmsServiceImpl implements SendSmsService {
     @Override
     public Boolean sendLoginSms(SendSalesLoginSmsReq req) {
         SendLoginSmsReq cloudPram = new SendLoginSmsReq();
+        String deviceToken = UagUtils.getCurrentDeviceToken();
+        if (StringUtils.isEmpty(deviceToken)){
+            throw new BusinessException(ErrorCodesEnum.REQUEST_PARAM_ERROR.code(),ErrorCodesEnum.REQUEST_PARAM_ERROR.msg()+" filed of deviceToken is empty");
+        }
         try {
             BeanUtils.copyProperties(cloudPram,req);
         } catch (Exception e) {
@@ -55,7 +59,7 @@ public class SendSmsServiceImpl implements SendSmsService {
             throw new BusinessException(ErrorCodesEnum.READ_VALUE_FROM_APOLLO.code(),ErrorCodesEnum.READ_VALUE_FROM_APOLLO.msg()+" filed of timeOut load from apollo failure");
         }
         cloudPram.setSmsCode(generateVerifyCode());
-
+        cloudPram.setDeviceToken(deviceToken);
 
         /*同步回写缓存信息*/
         BaseResponse<Boolean> resp = salesSendSmsCloudApi.setLoginSmsCheckCache(cloudPram);
