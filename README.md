@@ -23,4 +23,4 @@
  
 Documentation
 ---
-[Silicon Documentation](https://github.com/0nebean/Silicon/wiki)
+[Magnesium Documentation](https://github.com/0nebean/Magnesium/wiki)
