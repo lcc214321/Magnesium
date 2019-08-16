@@ -70,16 +70,6 @@ public class AppInfoVo {
         this.appCategory = appCategory;
     }
 
-    @EnumDeserialize(using = AppStatusEnum.class)
-    private String appStatus;
-
-    public String getAppStatus() {
-        return this.appStatus;
-    }
-
-    public void setAppStatus(String appStatus) {
-        this.appStatus = appStatus;
-    }
 
     @JsonDeserialize(using = TimeStamp_Deserializer.class)
     private Timestamp createTime;
@@ -90,6 +80,18 @@ public class AppInfoVo {
 
     public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
+    }
+
+
+    @EnumDeserialize(using = AppStatusEnum.class)
+    private String appStatus;
+
+    public String getAppStatus() {
+        return this.appStatus;
+    }
+
+    public void setAppStatus(String appStatus) {
+        this.appStatus = appStatus;
     }
 
     @JsonDeserialize(using = TimeStamp_Deserializer.class)

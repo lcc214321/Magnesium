@@ -21,7 +21,7 @@ local function checkUnLoginAccessWhiteList()
     local appId = ngx.ctx.appId;
     --[[use key从缓存获取 unLoginAccessWhiteList ]]
     local redisKey = constants.RS_SALES_UNLOGIN_ACCESS_WHITELIST_API;
-    ngx.log(ngx.DEBUG, "openAPI checkUnLoginAccessWhiteList use key [" .. redisKey .. "] hash key ["..appId.."] get ipWhiteList from redis");
+        ngx.log(ngx.DEBUG, "openAPI checkUnLoginAccessWhiteList use key [" .. redisKey .. "] hash key ["..appId.."] get ipWhiteList from redis");
 
     local isSuccess, unLoginAccessWhiteList, errReturn = redisUtil.hget(redisKey,appId);
 
@@ -32,32 +32,22 @@ local function checkUnLoginAccessWhiteList()
 
     unLoginAccessWhiteList = stringUtil.toStringTrim(unLoginAccessWhiteList);
 
+    local pass = false;
+
     if(stringUtil.isBlank(unLoginAccessWhiteList)) then
-        --[[ 提示未登录]]
-        comm.error4OpenApiWithCode("unlogin request",errorCodesEnum.unlogin_request);
+        return pass;
     end
 
     --[[ipWhiteList 结果转json]]
     local unLoginAccessWhiteListJson = jsonUtil.decode(unLoginAccessWhiteList);
 
-
-    local pass = false;
-
     if (unLoginAccessWhiteListJson ~= nil and unLoginAccessWhiteListJson ~= ngx.null) then
-
         for _,val in pairs(unLoginAccessWhiteListJson) do
             local apiPath = val.apiPath;
             if (stringUtil.isNotBlank(apiPath) and apiPath == currentApiPath) then
                 pass = true;
             end
         end
-
---        if(not pass) then
---            ngx.log(ngx.DEBUG, "openAPI checkUnLoginAccessWhiteList currentApiPath ["..currentApiPath.."] is not in unlogin access allow list");
---            comm.error4OpenApiWithCode("unlogin request",errorCodesEnum.unlogin_request);
---        end
-    else
-        comm.error4OpenApiWithCode("unlogin request",errorCodesEnum.unlogin_request);
     end
     return pass;
 end
@@ -90,17 +80,20 @@ local function checkHybridTokenLoginStatus(accessTokenCasheJson,appId)
         if(stringUtil.isBlank(deviceTokenJson)) then
             --[[账号已经被登出  提示未登录]]
             comm.error4OpenApiWithCode("unlogin request",errorCodesEnum.unlogin_request);
+        else
+            ngx.log(ngx.DEBUG, "deviceTokenJson = ["..jsonUtil.encode(deviceTokenJson).."]");
         end
 
-        local telphone = stringUtil.toStringTrim(deviceTokenJson["telphone"]);
-        local uagAuthUserId = stringUtil.toStringTrim(deviceTokenJson["uagAuthUserId"]);
 
-        if(stringUtil.isBlank(telphone) or stringUtil.isBlank(uagAuthUserId)) then
+        local uagUsername = stringUtil.toStringTrim(deviceTokenJson["uagUsername"]);
+        local uagUserId = stringUtil.toStringTrim(deviceTokenJson["uagUserId"]);
+
+        if(stringUtil.isBlank(uagUsername) or stringUtil.isBlank(uagUserId)) then
             --[[账号已经被登出  提示未登录]]
             comm.error4OpenApiWithCode("unlogin request",errorCodesEnum.unlogin_request);
         end
         --[[将 uagAuthUserId 设置到上下文]]
-        ngx.ctx.uagAuthUserId = uagAuthUserId;
+        ngx.ctx.uagAuthUserId = uagUserId;
     end
 
 end

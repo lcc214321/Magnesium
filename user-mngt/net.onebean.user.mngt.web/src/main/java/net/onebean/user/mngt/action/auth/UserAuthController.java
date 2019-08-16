@@ -2,12 +2,14 @@ package net.onebean.user.mngt.action.auth;
 
 import net.onebean.core.base.BaseResponse;
 import net.onebean.core.error.BusinessException;
+import net.onebean.user.mngt.api.model.CheckUagLoginStatusReq;
 import net.onebean.user.mngt.api.model.UagLoginInfo;
 import net.onebean.user.mngt.common.ErrorCodesEnum;
 import net.onebean.user.mngt.service.UagUserInfoService;
 import net.onebean.user.mngt.vo.PasswordLoginReq;
 import net.onebean.user.mngt.vo.SmsCodeLoginRegisterReq;
 import net.onebean.util.DateUtils;
+import net.onebean.util.UagUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,6 +153,26 @@ public class UserAuthController {
         return response;
     }
 
-
+    @SuppressWarnings("unchecked")
+    @PostMapping(value = "logOut",produces = {"application/json"},consumes = {"application/json"})
+    public BaseResponse<Boolean> uagLogOut() {
+        logger.info("uagLogOut method access"+ DateUtils.getNowyyyy_MM_dd_HH_mm_ss());
+        BaseResponse<Boolean> response = new BaseResponse<>();
+        try {
+            CheckUagLoginStatusReq req = new CheckUagLoginStatusReq();
+            req.setAppId(UagUtils.getCurrentAppId());
+            req.setDeviceToken(UagUtils.getCurrentDeviceToken());
+            response = BaseResponse.ok(uagUserInfoService.uagLogOut(req));
+        } catch (BusinessException e) {
+            response.setErrCode(e.getCode());
+            response.setErrMsg(e.getMsg());
+            logger.info("uagLogOut method BusinessException ex = ", e);
+        } catch (Exception e) {
+            response.setErrCode(ErrorCodesEnum.OTHER.code());
+            response.setErrMsg(ErrorCodesEnum.OTHER.msg());
+            logger.error("uagLogOut method catch Exception e = ",e);
+        }
+        return response;
+    }
 
 }
