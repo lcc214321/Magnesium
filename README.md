@@ -14,7 +14,7 @@
 
 
 - 框架特性[(查看明细)](https://github.com/0nebean/Magnesium/wiki/%E6%A1%86%E6%9E%B6%E7%89%B9%E6%80%A7)
-  - 基于[`Silicon`]()，[`VUE`]()，[`openresty`](http://openresty.org/cn/) 开发
+  - 基于[`Silicon`](https://0nebean.github.io/Silicon/)，[`VUE`](https://cn.vuejs.org/)，[`openresty`](http://openresty.org/cn/) 开发
   - 数据中台能力，企业及平台，平台上一切数据能力皆服务，以服务的单位管理API
   - 开放平台能力，提供oauth授权码模式，私有令牌（登录后访问），IP白名单+Token，等鉴权方式来为接入应用消费平台上API（前后端分离，移动端，后台）
   - API网关能力，当API穿透AUTH层后，即使是分布式的项目也能通过通用的API获取用户，设备信息
